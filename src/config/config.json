@@ -40,6 +40,24 @@
     "settings": {}
   },
 
+  "giscus": {
+    "enable": true,
+    "src": "https://giscus.app/client.js",
+    "repo": "tibatibangoding/public-tibatibangoding.github.io",
+    "repo_id": "R_kgDOJ4mVGQ",
+    "category": "General",
+    "category_id": "DIC_kwDOJ4mVGc4CXuuY",
+    "mapping": "title",
+    "strict": "0",
+    "reactions": "1",
+    "metadata": "1",
+    "position": "bottom",
+    "theme": "light",
+    "darkTheme": "transparent_dark",
+    "lang": "id",
+    "loading": "lazy"
+  },
+
   "metadata": {
     "meta_author": "Tiba Tiba Ngoding",
     "meta_image": "/images/og-image.png",
