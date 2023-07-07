@@ -1,5 +1,5 @@
 ---
-title: "Blog Posts"
-meta_title: ""
+title: "Catatan"
+meta_title: "Catatan - Tiba Tiba Ngoding"
 description: "this is meta description"
 ---
