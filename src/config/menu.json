@@ -1,0 +1,50 @@
+{
+  "main": [
+    {
+      "name": "Beranda",
+      "url": "/"
+    },
+    {
+      "name": "Tentang",
+      "url": "/about"
+    },
+    {
+      "name": "Pelayanan",
+      "url": "/service"
+    },
+    {
+      "name": "Teknologi",
+      "url": "/technologies"
+    },
+    {
+      "name": "Proyek",
+      "url": "/projects"
+    },
+    {
+      "name": "Kontak",
+      "url": "/contact"
+    }
+  ],
+  "footer": [
+    {
+      "name": "Catatan",
+      "url": "/blog"
+    },
+    {
+      "name": "Kategori",
+      "url": "/categories"
+    },
+    {
+      "name": "Tim Kami",
+      "url": "/authors"
+    },
+    {
+      "name": "Terms of Service",
+      "url": "/terms-of-service"
+    },
+    {
+      "name": "Privacy Policy",
+      "url": "/privacy-policy"
+    }
+  ]
+}
