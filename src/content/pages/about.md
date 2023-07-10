@@ -1,6 +1,6 @@
 ---
-title: "Hey, I am Tiba Tiba Ngoding!"
-meta_title: "About"
+title: "Tentang Kami"
+meta_title: "Tentang Kami - Tiba Tiba Ngoding"
 description: "this is meta description"
 image: "/images/logo1.png"
 draft: false
