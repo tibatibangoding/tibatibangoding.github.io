@@ -1,9 +1,9 @@
 ---
-title: "Hey, I am John Doe!"
+title: "Hey, I am Tiba Tiba Ngoding!"
 meta_title: "About"
 description: "this is meta description"
-image: "/images/avatar.png"
+image: "/images/logo1.png"
 draft: false
 ---
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis illum nesciunt commodi vel nisi ut alias excepturi ipsum, totam, labore tempora, odit ex iste tempore sed. Fugit voluptatibus perspiciatis assumenda nulla ad nihil, omnis vel, doloremque sit quam autem optio maiores, illum eius facilis et quo consectetur provident dolor similique! Enim voluptatem dicta expedita veritatis repellat dolorum impedit, provident quasi at.
+Tiba Tiba Ngoding is a dedicated team providing high-quality web application development services. With our coding expertise, we help businesses smoothly transition into the digital world. We create custom web applications designed to optimize efficiency, streamline processes, and drive business growth. Emphasizing innovation and collaboration, we work closely with clients to ensure solutions aligned with their goals and needs. With professional service, reliability, and ongoing support, we empower businesses with cutting-edge web applications that maximize opportunities and make a positive impact on the target audience.

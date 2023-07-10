@@ -1,0 +1,31 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+const {service_props} = Astro.props;
+console.log(service_props.data.services);
+---
+
+<div>
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto mb-12 text-center md:col-10 lg:col-8 xl:col-10 row justify-center">
+          <h2 set:html={markdownify(service_props.data.title)} class="mb-4  " />
+          <p set:html={markdownify(service_props.data.description)} class="md:col-9 " />
+        </div>
+        <div class="grid px-10 md:grid-cols-3 gap-10 md:gap-20">
+          {service_props.data.services.map((service: any) => (
+            <div class=" row bg-theme-light  dark:bg-darkmode-theme-light rounded-xl px-4 py-6 text-center  justify-center">
+              <div class="mb-8 col-4 flex items-center ">
+                <img src={service.image} class="mx-auto" loading="lazy" />
+              </div>
+              <h4 set:html={markdownify(service.title)}/>
+              <p set:html={markdownify(service.description)}/>
+            </div>
+          ))
+          }
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>

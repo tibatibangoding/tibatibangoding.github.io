@@ -1,7 +1,7 @@
 ---
 enable: true
 title: "Siap membangun aplikasi Anda berikutnya dengan kami?"
-image: "/images/call-to-action.png"
+image: "/images/Saly-100.png"
 description: "Rasakan dan buat aplikasi impian Anda menjadi kenyataan bersama kami!"
 button:
   enable: true
