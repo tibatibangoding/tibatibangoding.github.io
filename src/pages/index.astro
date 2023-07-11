@@ -28,12 +28,12 @@ const { banner, features }: Homepage = homepage.data;
 
 <Base>
   <!-- Banner -->
-  <section class="section pt-24  flex items-center justify-center">
+  <section class="section pt-12 flex items-center justify-center">
     <div class="container ">
       <div class="md:flex justify-center items-center ">
         <div class="text-center mb-10 md:text-left">
-          <h1 set:html={markdownify(banner.title)} class="mb-4 " />
-          <p set:html={markdownify(banner.content)} class="mb-8" />
+          <h1 set:html={markdownify(banner.title)} class="mb-4 "></h1>
+          <p set:html={markdownify(banner.content)} class="mb-8"></p>
           {
             banner.button.enable && (
               <a class="btn btn-primary" href={banner.button.link}>
@@ -50,6 +50,7 @@ const { banner, features }: Homepage = homepage.data;
                 width="1272"
                 height="100"
                 alt="banner image"
+                loading="lazy"
               />
             </div>
           )
