@@ -18,20 +18,20 @@ const { title, description, meta_title, image } = entry.data;
   <section class="section-sm">
     <div class="container">
       <div class="row justify-center">
-        <div class="text-center md:col-10 lg:col-7">
+        <div class="text-center md:col-10 lg:col-9">
+          <h2 set:html={markdownify(title)} class="h3 mb-6"></h2>
           {
             image && (
               <Image
                 class="mx-auto mb-6 rounded-lg"
                 src={image}
-                width={200}
-                height={200}
+                width={450}
+                height={250}
                 alt={title}
               />
             )
           }
-          <h2 set:html={markdownify(title)} class="h3 mb-6" />
-          <div class="content">
+          <div class="content text-justify">
             <Content />
           </div>
         </div>

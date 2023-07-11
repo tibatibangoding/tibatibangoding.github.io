@@ -2,8 +2,8 @@
 title: "Tentang Kami"
 meta_title: "Tentang Kami - Tiba Tiba Ngoding"
 description: "this is meta description"
-image: "/images/avatar.png"
+image: "/images/logo-horizontal-jpg.jpg"
 draft: false
 ---
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis illum nesciunt commodi vel nisi ut alias excepturi ipsum, totam, labore tempora, odit ex iste tempore sed. Fugit voluptatibus perspiciatis assumenda nulla ad nihil, omnis vel, doloremque sit quam autem optio maiores, illum eius facilis et quo consectetur provident dolor similique! Enim voluptatem dicta expedita veritatis repellat dolorum impedit, provident quasi at.
+Tiba Tiba Ngoding adalah organisasi atau tim yang menyediakan layanan pengembangan aplikasi web berkualitas tinggi. Dengan keahlian pengkodean kami, kami membantu bisnis beralih dengan lancar ke dunia digital. Kami membuat aplikasi web khusus yang dirancang untuk mengoptimalkan efisiensi, merampingkan proses, dan mendorong pertumbuhan bisnis. Menekankan inovasi dan kolaborasi, kami bekerja sama dengan klien untuk memastikan solusi selaras dengan tujuan dan kebutuhan mereka. Dengan layanan profesional, keandalan, dan dukungan berkelanjutan, kami memberdayakan bisnis dengan aplikasi web canggih yang memaksimalkan peluang dan memberi dampak positif pada audiens target.
