@@ -1,8 +1,8 @@
 ---
 enable: true
-title: "Siap membangun aplikasi Anda berikutnya dengan kami?"
+title: "Siap Membangun Aplikasi Anda Berikutnya dengan Kami?"
 image: "/images/Saly-100.png"
-description: "Rasakan dan buat aplikasi impian Anda menjadi kenyataan bersama kami!"
+description: "Rasakan dan bangun aplikasi impian Anda menjadi kenyataan bersama kami!"
 button:
   enable: true
   label: "Hubungi Kami"
