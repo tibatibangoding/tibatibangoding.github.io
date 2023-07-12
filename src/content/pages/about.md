@@ -2,7 +2,7 @@
 title: "Tentang Kami"
 meta_title: "Tentang Kami - Tiba Tiba Ngoding"
 description: "this is meta description"
-image: "/images/logo-horizontal-jpg.jpg"
+image: "/images/logo-new-jpg.jpg"
 draft: false
 ---
 

@@ -1,0 +1,49 @@
+---
+import { Image } from "@astrojs/image/components";
+import { humanize, plainify } from "@/lib/utils/textConverter";
+import { FaRegFolder } from "react-icons/fa/index.js";
+
+const { data } = Astro.props;
+const { title, image, date, tags, link } = data.data;
+---
+
+<div class="bg-body dark:bg-darkmode-body">
+  {
+    image && (
+      <Image
+        class="mb-6 w-full rounded"
+        src={image}
+        alt={title}
+        width={445}
+        height={230}
+        quality={100}
+      />
+    )
+  }
+  <h4 class="mb-3">
+    <a href={link} target="_blank">
+      {title}
+    </a>
+  </h4>
+  <ul class="mb-4">
+    <li class="mr-4 flex items-center">
+      <FaRegFolder className={"mr-3 -mt-1"} />
+      {
+        tags.map((category: string, index: number) => (
+          <p>
+            {humanize(category)}
+            {index !== tags.length - 1 && ","}
+          </p>
+        ))
+      }
+    </li>
+  </ul>
+  <p class="mb-6 text-justify">{plainify(data.body)}</p>
+  <a
+    class="btn btn-outline-primary btn-sm"
+    href={link}
+    target="_blank"
+  >
+    Kunjungi Situs
+  </a>
+</div>
