@@ -1,0 +1,51 @@
+---
+import BlogCard from "@/components/BlogCard.astro";
+import Base from "@/layouts/Base.astro";
+import config from "@/config/config.json";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
+import { markdownify } from "@/lib/utils/textConverter";
+const { blog_folder } = config.settings;
+const posts = await getSinglePage(blog_folder);
+const sortedPosts = sortByDate(posts);
+const currentPosts = sortedPosts.slice(0, config.settings.pagination);
+
+---
+
+<Base>
+  <section class=" flex items-center justify-center ">
+    <div class="container ">
+      <div class="md:flex justify-center items-center  h-screen">
+        <div class="text-center mb-10 md:text-left ">
+          <h1 set:html={markdownify("Elevate Your Business with a Premium Digital Solution for Unparalleled Growth")} class="mb-4 " />
+          <p set:html={markdownify('banner.content')} class="mb-8" />
+       
+        </div>
+        
+
+            <div class="">
+              <img
+                src='/images/banner-300.png'
+                width="1272"
+                height="100"
+                alt="banner image"
+              /> 
+            </div>
+      </div>
+      <div>
+        <div class="">
+          <div class="row">
+            {
+              currentPosts.map((post) => (
+                <div class="mb-14 md:col-6">
+                  <BlogCard data={post} />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+    </div>
+    </div>
+  </section>
+
+</Base>
