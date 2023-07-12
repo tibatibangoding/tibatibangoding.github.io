@@ -1,39 +1,37 @@
 ---
-import BlogCard from "@/components/BlogCard.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
 import Base from "@/layouts/Base.astro";
 import config from "@/config/config.json";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
-import { markdownify } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader.astro";
 import { getEntryBySlug } from "astro:content";
-import ProjectCard from "@/components/ProjectCard.astro";
 
 const { projects_folder } = config.settings;
 const postIndex = await getEntryBySlug<any, string>(projects_folder, "-index");
 const posts = await getSinglePage(projects_folder);
 const sortedPosts = sortByDate(posts);
 const currentPosts = sortedPosts.slice(0, config.settings.pagination);
-console.log(posts);
 ---
 
-<Base>
+<Base
+  title={postIndex.data.title}
+  meta_title={postIndex.data.meta_title}
+  image={postIndex.data.image}
+  description={postIndex.data.description}
+>
   <PageHeader title={postIndex.data.title}  />
-  <section class="section flex items-center justify-center ">
+  <section class="section flex items-center justify-center">
     <div class="container">
-      <div>
-        <div class="">
-          <div class="row">
-            {
-              currentPosts.map((post) => (
-                <div class="mb-14 md:col-6">
-                  <ProjectCard data={post} />
-                </div>
-              ))
-            }
-          </div>
-        </div>
-    </div>
+      <div class="row">
+        {
+          currentPosts.map((post) => (
+            <div class="mb-14 md:col-6">
+              <ProjectCard data={post} />
+            </div>
+          ))
+        }
+      </div>
     </div>
   </section>
 </Base>

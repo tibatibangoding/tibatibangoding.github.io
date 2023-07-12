@@ -1,5 +1,5 @@
 ---
-title: "Project Kami"
-meta_title: "Prjects - Tiba Tiba Ngoding"
+title: "Proyek Kami"
+meta_title: "Proyek Kami - Tiba Tiba Ngoding"
 description: "this is meta description"
 ---

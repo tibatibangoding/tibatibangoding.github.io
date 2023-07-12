@@ -1,12 +1,8 @@
 ---
 import { Image } from "@astrojs/image/components";
-import config from "@/config/config.json";
-import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
-import { FaRegFolder, FaRegUserCircle } from "react-icons/fa/index.js";
+import { humanize, plainify } from "@/lib/utils/textConverter";
+import { FaRegFolder } from "react-icons/fa/index.js";
 
-const {
-  summary_length
-}: { summary_length: number; } = config.settings;
 const { data } = Astro.props;
 const { title, image, date, tags, link } = data.data;
 ---
@@ -20,6 +16,7 @@ const { title, image, date, tags, link } = data.data;
         alt={title}
         width={445}
         height={230}
+        quality={100}
       />
     )
   }
@@ -41,7 +38,7 @@ const { title, image, date, tags, link } = data.data;
       }
     </li>
   </ul>
-  <p class="mb-6">{plainify(data.body?.slice(0, Number(summary_length)))}</p>
+  <p class="mb-6 text-justify">{plainify(data.body)}</p>
   <a
     class="btn btn-outline-primary btn-sm"
     href={link}
