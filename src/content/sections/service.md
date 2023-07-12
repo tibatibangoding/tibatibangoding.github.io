@@ -14,5 +14,5 @@ services:
 
   - title: "UI / UX"
     image: "/images/icon-3.png"
-    description: "Kami memberikan sentuhan manusiawi pada UI/UX Anda dan membuat pengguna Anda tertarik pada aplikasi Anda."
+    description: "Kami memberikan sentuhan desain modern UI/UX pada aplikasi sehingga pengguna Anda tertarik pada aplikasi Anda."
 ---
