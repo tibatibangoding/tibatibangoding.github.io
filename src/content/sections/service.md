@@ -1,18 +1,18 @@
 ---
 enable: true
-title: "We help you to unlock the true potential of your business with our modern, secure, and reliable solutions."
-description: "We develop custom web, mobile applications and user interfaces using React JS, React Native and Ruby on Rails, serving the specific needs of clients."
+title: "Kami Menawarkan Berbagai Layanan yang dirancang Khusus untuk Memenuhi Kebutuhan Anda."
+description: "Kami mempunyai layanan Web Development, Mobile Development dan UI/UX menggunakan React Js, Flutter, dan Next Js."
 # Testimonials
 services:
   - title: "Web Development"
     image: "/images/icon-1.png"
-    description: "We design and develop highly scalable, cross-platform web applications"
+    description: "Kami merancang dan mengembangkan aplikasi web lintas platform yang sangat skalabel."
 
   - title: "Mobile Development"
     image: "/images/icon-2.png"
-    description: "We got your back when it comes to developing modern and feature-rich mobile apps."
+    description: "Kami mendukung Anda dalam mengembangkan aplikasi seluler modern dan kaya fitur."
 
   - title: "UI / UX"
     image: "/images/icon-3.png"
-    description: "We give a human touch to your UI/UX and make your users fall in love with it."
+    description: "Kami memberikan sentuhan manusiawi pada UI/UX Anda dan membuat pengguna Anda tertarik pada aplikasi Anda."
 ---
