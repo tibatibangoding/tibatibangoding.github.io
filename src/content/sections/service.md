@@ -6,7 +6,7 @@ description: "Kami mempunyai layanan Web Development, Mobile Development dan UI/
 services:
   - title: "Web Development"
     image: "/images/icon-1.png"
-    description: "Kami merancang dan mengembangkan aplikasi web lintas platform yang sangat skalabel."
+    description: "Kami merancang dan mengembangkan aplikasi web lintas platform yang sangat fleksibel."
 
   - title: "Mobile Development"
     image: "/images/icon-2.png"
