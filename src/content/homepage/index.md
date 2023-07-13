@@ -2,7 +2,7 @@
 # Banner
 banner:
   title: "Wujudkan Aplikasi Impian Anda untuk Meningkatkan Bisnis Anda."
-  content: "Kami akan melepaskan kekuatan solusi digital premium kami untuk memperkuat kehadiran online Anda dan mendorong bisnis Anda ke tingkat kesuksesan baru."
+  content: "Sedang mencari jasa pembuatan aplikasi bisnis yang inovatif? Di Tiba Tiba Ngoding, kami menawarkan semua yang Anda butuhkan, kami berkomitmen untuk menciptakan solusi aplikasi yang luar biasa."
   image: "/images/banner-300.png"
   button:
     enable: true
@@ -23,7 +23,7 @@ features:
 
   - title: "Mengapa Harus Kami?"
     image: "/images/Saly-110.png"
-    content: "Tiba Tiba Ngoding adalah Tim yang solid yang mencakup semua yang Anda butuhkan untuk memulai proyek Anda. Apa saja yang termasuk dalam layanan di Tiba Tiba Ngoding :"
+    content: "Anda mungkin bertanya-tanya, mengapa memilih Tim Tiba Tiba Ngoding untuk mengembangkan solusi perangkat lunak Anda? Di Tiba Tiba Ngoding Anda dapat menemukan beberapa layanan berikut :"
     bulletpoints:
       - "Web Desain Kreatif"
       - "Pengembangan Front-end dan Back-end"
