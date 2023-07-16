@@ -13,10 +13,6 @@
       "url": "/service"
     },
     {
-      "name": "Harga",
-      "url": "/pricing"
-    },
-    {
       "name": "Proyek",
       "url": "/projects"
     },
