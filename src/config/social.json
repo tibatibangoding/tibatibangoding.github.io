@@ -1,14 +1,9 @@
 {
   "main": [
     {
-      "name": "facebook",
-      "icon": "FaFacebook",
-      "link": "https://www.facebook.com/"
-    },
-    {
-      "name": "twitter",
-      "icon": "FaTwitter",
-      "link": "https://twitter.com/"
+      "name": "fiverr",
+      "icon": "TbBrandFiverr",
+      "link": "https://www.fiverr.com/tibatibangoding"
     },
     {
       "name": "github",
