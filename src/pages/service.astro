@@ -26,8 +26,12 @@ const { features }: Homepage = homepage.data;
 
 ---
 
-<Base>
-  <PageHeader title="Service Kami" />
+<Base
+  title="Pelayanan Kami - Tiba Tiba Ngoding"
+  meta_title="Pelayanan Kami - Tiba Tiba Ngoding"
+  description=""
+  >
+  <PageHeader title="Pelayanan Kami" />
   <Services service_props={service}/>
   {
     features.map((feature, index: number) => (
@@ -67,36 +71,55 @@ const { features }: Homepage = homepage.data;
             </div>
           </div>
         </section>
-    </div>
+      </div>
     ))
   }
-  <div class="section-sm ">
-  <div class="container flex flex-col gap-10">
-    <div class=" flex flex-col md:flex-row items-center  gap-10 md:gap-32">
-      <h4 class="">Frontend Teknologi</h4>
-      <div class="grid grid-cols-2 md:flex   md:flex-wrap gap-10   ">
-        <div class="w-32 h-32  rounded-full bg-blue-800  p-5"><img src="images/react.png" alt="" class="object-cover w-full h-full"></div>
-        <div class="w-32 h-32  rounded-full bg-gray-800  p-5"><img src="images/next-circle.png" alt="" class="object-cover w-full h-full "></div>
-        <div class="w-32 h-32  rounded-full bg-blue-950  p-5"><img src="images/tailwind.png" alt="" class="object-cover w-full h-full "></div>
-        <div class="w-32 h-32  rounded-full bg-purple-400  p-5 flex justify-center items-center"><img src="images/bootstrap.png" alt="" class="object-cover object-center  "></div>
+  <div class="section-sm">
+    <div class="container flex flex-col gap-10">
+      <h2 class="text-center mb-4">Teknologi yang Kami Gunakan</h2>
+
+      <div class=" flex flex-col md:flex-row items-center gap-10 md:gap-32">
+        <h4>Frontend</h4>
+        <div class="grid grid-cols-2 md:flex md:flex-wrap gap-10">
+          <div class="w-24 h-24 rounded-full bg-blue-800 p-5">
+            <img src="images/react.png" alt="" class="object-cover w-full h-full">
+          </div>
+          <div class="w-24 h-24 rounded-full bg-gray-800 p-5">
+            <img src="images/next-circle.png" alt="" class="object-cover w-full h-full">
+          </div>
+          <div class="w-24 h-24 rounded-full bg-blue-950  p-5">
+            <img src="images/tailwind.png" alt="" class="object-cover w-full h-full">
+          </div>
+          <div class="w-24 h-24 rounded-full bg-purple-400 p-5 flex justify-center items-center">
+            <img src="images/bootstrap.png" alt="" class="object-cover object-center">
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="flex flex-col md:flex-row items-center gap-10 md:gap-32">
+        <h4>Backend</h4>
+        <div class="grid grid-cols-2 md:flex md:flex-wrap gap-10">
+          <div class="w-24 h-24 rounded-full bg-red-950 p-5">
+            <img src="images/laravel.png" alt="" class="object-cover w-full h-full">
+          </div>
+          <div class="w-24 h-24 rounded-full bg-gray-300 p-5 flex justify-center items-center">
+            <img src="images/expresss.png" alt="" class="object-cover object-center">
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="flex  flex-col md:flex-row items-center gap-10 md:gap-32">
+        <h4>Database</h4>
+        <div class="grid grid-cols-2 md:flex md:flex-wrap gap-10">
+          <div class="w-24 h-24 rounded-full bg-orange-50 p-5 flex justify-center items-center">
+            <img src="images/mysql.png" alt="" class="object-cover object-center">
+          </div>
+        </div>
       </div>
     </div>
-    <hr>
-    <div class=" flex flex-col md:flex-row  items-center gap-10 md:gap-32 ">
-      <h4 class=" ">Backend Teknologi</h4>
-      <div class="grid grid-cols-2 md:flex   md:flex-wrap gap-10   ">
-        <div class="w-32 h-32  rounded-full bg-red-950  p-5"><img src="images/laravel.png" alt="" class="object-cover w-full h-full"></div>
-        <div class="w-32 h-32  rounded-full bg-gray-300  p-5 flex justify-center items-center"><img src="images/expresss.png" alt="" class="object-cover "></div>
-      </div>
-    </div>
-    <hr>
-    <div class="flex  flex-col md:flex-row items-center gap-10 md:gap-32 ">
-      <h4 class=" ">Database Teknologi</h4>
-      <div class="grid grid-cols-2 md:flex   md:flex-wrap gap-10   ">
-        <div class="w-32 h-32  rounded-full bg-orange-50  p-5  flex justify-center items-center"><img src="images/mysql.png" alt="" class="object-cover object-center  "></div>
-      </div>
-    </div>
-  
-  </div>
   </div>
 </Base>
