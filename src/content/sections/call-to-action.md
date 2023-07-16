@@ -6,5 +6,5 @@ description: "Rasakan dan bangun aplikasi impian Anda menjadi kenyataan bersama 
 button:
   enable: true
   label: "Hubungi Kami"
-  link: "mailto:naufalakbar378@gmail.com"
+  link: "mailto:tibatibangoding@gmail.com"
 ---

@@ -6,15 +6,15 @@ description: this is meta description
 social:
   - name: github
     icon: FaGithub
-    link: https://github.com/nuflakbrr
+    link: https://www.github.com/nuflakbrr
 
-  - name: twitter
-    icon: FaTwitter
-    link: https://twitter.com/nuflakbrr
+  - name: instagram
+    icon: FaInstagram
+    link: https://www.instagram.com/kbrnugroho
 
   - name: linkedin
     icon: FaLinkedin
-    link: https://linkedin.com/public-profile/in/nuflakbrr/
+    link: https://www.linkedin.com/public-profile/in/nuflakbrr
 ---
 
 Founder & Team Leader | Frontend Web Developer | Junior Frontend Web Developer at Aksamedia.

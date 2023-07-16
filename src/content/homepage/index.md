@@ -7,7 +7,7 @@ banner:
   button:
     enable: true
     label: "Hubungi Kami"
-    link: "mailto:naufalakbar378@gmail.com"
+    link: "mailto:tibatibangoding@gmail.com"
 
 # Features
 features:
