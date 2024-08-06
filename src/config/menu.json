@@ -23,14 +23,6 @@
   ],
   "footer": [
     {
-      "name": "Blog",
-      "url": "/blog"
-    },
-    {
-      "name": "Kategori",
-      "url": "/categories"
-    },
-    {
       "name": "Tim Kami",
       "url": "/teams"
     },
