@@ -1,0 +1,377 @@
+---
+import type {
+  ErrorStateProps,
+  ErrorMetadata,
+  ErrorTheme,
+} from "../interfaces/error";
+
+const { code, error } = Astro.props as ErrorStateProps;
+
+// Extended ErrorTheme to include button-specific styles
+interface ExtendedErrorTheme extends ErrorTheme {
+  btnShadow: string;
+}
+
+const getErrorContent = (statusCode: number) => {
+  const is5xx = statusCode >= 500;
+
+  const metadataMap: Record<number, ErrorMetadata> = {
+    401: {
+      titlePrefix: "Sesi Anda",
+      titleSuffix: "Berakhir",
+      description:
+        "Maaf, sesi Anda telah berakhir atau Anda belum login. Silakan login kembali untuk melanjutkan sesi belajar Anda.",
+      badge: "Error 401: Unauthorized",
+      theme: "amber",
+    },
+    403: {
+      titlePrefix: "Akses Halaman",
+      titleSuffix: "Dibatasi",
+      description:
+        "Maaf, Anda tidak memiliki izin untuk melihat halaman ini. Silakan hubungi administrator atau mentor Anda.",
+      badge: "Error 403: Forbidden",
+      theme: "amber",
+    },
+    404: {
+      titlePrefix: "Halaman Tidak",
+      titleSuffix: "Ditemukan",
+      description:
+        "Waduh! Sepertinya route yang Anda cari tidak ada, sudah dihapus, atau sedang dalam perbaikan oleh tim kami.",
+      badge: "Error 404: Not Found",
+      theme: "rose",
+    },
+    500: {
+      titlePrefix: "Terjadi Kesalahan",
+      titleSuffix: "Internal",
+      description:
+        "Ups! Server kami sedang mengalami gangguan sejenak. Silakan coba memuat ulang halaman beberapa saat lagi.",
+      badge: "Error 500: Server Error",
+      theme: "amber",
+    },
+    503: {
+      titlePrefix: "Layanan Tidak",
+      titleSuffix: "Tersedia",
+      description:
+        "Saat ini layanan kami sedang dalam pemeliharaan terjadwal demi meningkatkan kenyamanan belajar Anda.",
+      badge: "Error 503: Service Unavailable",
+      theme: "emerald",
+    },
+  };
+
+  const defaultContent: ErrorMetadata = is5xx
+    ? {
+        titlePrefix: "Terjadi Kesalahan",
+        titleSuffix: "Server",
+        description:
+          "Server mengalami kendala yang tidak terduga. Mohon maaf atas ketidaknyamanan ini.",
+        badge: `Error ${statusCode}: Server Exception`,
+        theme: "amber",
+      }
+    : {
+        titlePrefix: "Terjadi Kesalahan",
+        titleSuffix: "Klien",
+        description: "Permintaan Anda tidak dapat diproses oleh sistem kami.",
+        badge: `Error ${statusCode}: Client Error`,
+        theme: "rose",
+      };
+
+  const content = metadataMap[statusCode] ?? defaultContent;
+
+  const themes: Record<ErrorMetadata["theme"], ExtendedErrorTheme> = {
+    amber: {
+      badgeColor:
+        "bg-amber-500/10 dark:bg-amber-950/40 border-amber-500/20 dark:border-amber-500/30 text-amber-600 dark:text-amber-400",
+      pingColor: "bg-amber-400",
+      dotColor: "bg-amber-500",
+      gradient: "from-amber-600 via-amber-500 to-yellow-500",
+      glowStart: "bg-amber-500/10 dark:bg-amber-500/15",
+      glowEnd: "bg-yellow-500/5 dark:bg-yellow-500/10",
+      terminalIcon: "bg-amber-500",
+      borderType: "text-amber-500/40 dark:text-amber-500/20",
+      errorColor: "text-amber-500 dark:text-amber-400",
+      btnShadow: "shadow-amber-500/20 hover:shadow-amber-500/40",
+    },
+    rose: {
+      badgeColor:
+        "bg-rose-500/10 dark:bg-rose-950/40 border-rose-500/20 dark:border-rose-500/30 text-rose-600 dark:text-rose-400",
+      pingColor: "bg-rose-400",
+      dotColor: "bg-rose-500",
+      gradient: "from-rose-600 via-pink-600 to-orange-500",
+      glowStart: "bg-rose-500/15 dark:bg-rose-500/20",
+      glowEnd: "bg-orange-500/5 dark:bg-orange-500/10",
+      terminalIcon: "bg-rose-500",
+      borderType: "text-rose-500/40 dark:text-rose-500/20",
+      errorColor: "text-rose-500 dark:text-rose-400",
+      btnShadow: "shadow-rose-500/20 hover:shadow-rose-500/40",
+    },
+    emerald: {
+      badgeColor:
+        "bg-emerald-500/10 dark:bg-emerald-950/40 border-emerald-500/20 dark:border-emerald-500/30 text-emerald-600 dark:text-emerald-400",
+      pingColor: "bg-emerald-400",
+      dotColor: "bg-emerald-500",
+      gradient: "from-emerald-600 via-teal-600 to-cyan-500",
+      glowStart: "bg-emerald-500/10 dark:bg-emerald-500/15",
+      glowEnd: "bg-cyan-500/5 dark:bg-cyan-500/10",
+      terminalIcon: "bg-emerald-500",
+      borderType: "text-emerald-500/40 dark:text-emerald-500/20",
+      errorColor: "text-emerald-500 dark:text-emerald-400",
+      btnShadow: "shadow-emerald-500/20 hover:shadow-emerald-500/40",
+    },
+  };
+
+  return { ...content, ...themes[content.theme] };
+};
+
+const meta = getErrorContent(code);
+
+// Foolproof CSS gradient fallbacks to completely bypass Tailwind V4 compilation bugs
+const inlineGradients = {
+  rose: "linear-gradient(135deg, #f43f5e 0%, #ec4899 50%, #f97316 100%)",
+  amber: "linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #fbbf24 100%)",
+  emerald: "linear-gradient(135deg, #059669 0%, #10b981 50%, #06b6d4 100%)",
+};
+const selectedGradient = inlineGradients[meta.theme] || inlineGradients.rose;
+---
+
+<!-- Symmetrical Absolute dead-center viewport wrap with grid bg -->
+<section
+  class="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 px-4 transition-colors duration-300"
+>
+  <!-- Sleek SaaS Grid Background Pattern with Center Radial Fade Out -->
+  <div
+    class="pointer-events-none absolute inset-0 -z-30 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] bg-size-[4.5rem_4.5rem] opacity-15"
+  >
+  </div>
+
+  <!-- Cyberpunk layered ambient glows (using Firefox-safe soft large-blur parameters) -->
+  <div class="pointer-events-none absolute inset-0 -z-20 overflow-visible">
+    <div
+      class={`absolute -top-1/4 -left-1/4 w-[600px] h-[600px] ${meta.glowStart} blur-[180px] rounded-full opacity-60 dark:opacity-75`}
+    >
+    </div>
+    <div
+      class={`absolute -bottom-1/4 -right-1/4 w-[500px] h-[500px] ${meta.glowEnd} blur-[180px] rounded-full opacity-50 dark:opacity-60`}
+    >
+    </div>
+  </div>
+
+  <div class="z-10 container mx-auto max-w-4xl">
+    <div class="relative flex flex-col items-center text-center">
+      <!-- Majestic, glowing status code overlay in the background -->
+      <div
+        class="pointer-events-none absolute -top-32 bg-clip-text leading-none font-black tracking-tighter text-transparent opacity-10 select-none md:-top-48"
+        style={`font-size: clamp(12rem, 30vw, 22rem); background-image: ${selectedGradient}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;`}
+      >
+        {code}
+      </div>
+
+      <!-- Symmetrical Cinematic Glassmorphic Card -->
+      <div
+        class="glass-panel relative w-full max-w-2xl overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-8 shadow-2xl backdrop-blur-xl md:p-12"
+        style={`box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 50px 0px ${meta.theme === "rose" ? "rgba(244,63,94,0.08)" : meta.theme === "amber" ? "rgba(245,158,11,0.08)" : "rgba(16,185,129,0.08)"};`}
+      >
+        <!-- Status Badge with Ping Animation -->
+        <div
+          class={`inline-flex items-center gap-2.5 px-4.5 py-2 rounded-full border text-xs font-black uppercase tracking-widest shadow-md transition-all duration-300 ${meta.badgeColor}`}
+        >
+          <span class="relative flex h-2 w-2">
+            <span
+              class={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${meta.pingColor}`}
+            ></span>
+            <span
+              class={`relative inline-flex rounded-full h-2 w-2 ${meta.dotColor}`}
+            ></span>
+          </span>
+          {meta.badge}
+        </div>
+
+        <!-- Premium Title (100% visible on Firefox/Zen/Brave) -->
+        <h2
+          class="mt-6 text-3xl leading-tight font-black tracking-tight text-white md:text-5xl"
+        >
+          {meta.titlePrefix}{" "}
+          <span
+            class="inline-block py-1 font-black"
+            style={`background-image: ${selectedGradient}; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent;`}
+          >
+            {meta.titleSuffix}
+          </span>
+        </h2>
+
+        <!-- Description Paragraph -->
+        <p
+          class="mx-auto mt-4 max-w-lg text-base leading-relaxed font-medium text-slate-400 md:text-lg"
+        >
+          {meta.description}
+        </p>
+
+        <!-- Ultra-Premium SOLID Carbon-Dark Diagnostics Console Panel (100% Opaque via Inline Styles) -->
+        <div
+          class="mt-8 overflow-hidden rounded-2xl text-left font-mono text-[11px] text-gray-300 shadow-2xl"
+          style="background-color: #0b0f17 !important; box-shadow: inset 0 1px 3px rgba(255,255,255,0.03), 0 15px 30px -10px rgba(0,0,0,0.95);"
+        >
+          <!-- Console Header (Solid background for absolute zero opacity bleeding) -->
+          <div
+            class="flex items-center justify-between px-4.5 py-3 select-none"
+            style="background-color: #0e1420 !important;"
+          >
+            <div class="flex items-center gap-3">
+              <!-- Solid colored window control dots - guaranteed dimension rendering via inline style -->
+              <div class="ml-2 flex shrink-0 gap-2">
+                <div
+                  style="width: 10px; height: 10px; min-width: 10px; min-height: 10px; background-color: #ff5f56; border-radius: 9999px; flex-shrink: 0; box-shadow: inset 0 1px 1px rgba(0,0,0,0.2);"
+                >
+                </div>
+                <div
+                  style="width: 10px; height: 10px; min-width: 10px; min-height: 10px; background-color: #ffbd2e; border-radius: 9999px; flex-shrink: 0; box-shadow: inset 0 1px 1px rgba(0,0,0,0.2);"
+                >
+                </div>
+                <div
+                  style="width: 10px; height: 10px; min-width: 10px; min-height: 10px; background-color: #27c93f; border-radius: 9999px; flex-shrink: 0; box-shadow: inset 0 1px 1px rgba(0,0,0,0.2);"
+                >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- High-Fidelity Rich Structured Coder Diagnostic Log -->
+          <div
+            class="text-slate-350 space-y-3.5 overflow-x-auto p-6 font-mono leading-relaxed"
+            style="background-color: #0b0f17 !important;"
+          >
+            <!-- Prompt executing statement mimicking a modern ZSH shell with Git branch info -->
+            <div
+              class="flex flex-wrap items-center gap-1.5 border-b border-white/3 pb-2.5"
+            >
+              <span class="text-emerald-450 font-bold select-none"
+                >ttn@system</span
+              >
+              <span class="text-slate-600 select-none">:</span>
+              <span class="text-sky-400 select-none">~/tibatibangoding</span>
+              <span class="font-medium text-slate-600 select-none">(</span>
+              <span class="font-bold text-pink-400 select-none">main</span>
+              <span class="font-medium text-slate-600 select-none">)</span>
+              <span class="ml-0.5 font-bold text-slate-500 select-none">$</span>
+              <span class="ml-1 font-semibold text-white select-all"
+                >./diagnose --verbose</span
+              >
+            </div>
+
+            <!-- Real-world container logs with timestamps for absolute developer realism -->
+            <div
+              class="space-y-2 pl-1"
+              style="background-color: #0b0f17 !important;"
+            >
+              <div class="flex gap-3">
+                <span class="text-slate-600 select-none">21:50:03</span>
+                <span class="font-bold text-sky-400">[SYSTEM]</span>
+                <span class="text-slate-200"
+                  >Starting diagnostics sequence...</span
+                >
+              </div>
+
+              <div class="space-y-1.5">
+                <div class="flex gap-3">
+                  <span class="text-slate-600 select-none">21:50:03</span>
+                  <span class="font-bold text-indigo-400">[ROUTE]</span>
+                  <span class="text-slate-200"
+                    >Checking active route maps...</span
+                  >
+                </div>
+
+                <div class="flex items-start gap-2 pl-14">
+                  <span class="mt-0.5 font-bold text-rose-500 select-none"
+                    >✖</span
+                  >
+                  <span class="text-slate-300">
+                    GET <span class="font-semibold text-white"
+                      >"{Astro.url.pathname}"</span
+                    > →
+                    <span class="font-bold text-rose-400"
+                      >Not Found (Code {code})</span
+                    >
+                  </span>
+                </div>
+
+                <div class="text-slate-450 flex items-center gap-2 pl-14">
+                  <span class="text-sky-400 select-none">ℹ</span>
+                  <span
+                    >System Registry: <span class="text-slate-350"
+                      >14 endpoints configured.</span
+                    ></span
+                  >
+                </div>
+              </div>
+
+              <!-- Beautiful node-style Traceback Frame stack -->
+              <div class="space-y-1.5 pt-1">
+                <div class="flex gap-3">
+                  <span class="text-slate-600 select-none">21:50:03</span>
+                  <span class="font-bold text-teal-400">[STACK]</span>
+                  <span class="text-slate-200"
+                    >Traceback (most recent call first):</span
+                  >
+                </div>
+                <div
+                  class="space-y-1 border-l-2 border-slate-700/60 py-0.5 pl-14 text-[10px] text-slate-400"
+                >
+                  <p class="text-slate-500 select-none">
+                    // Call stack pointers
+                  </p>
+                  <p>
+                    at <span class="text-yellow-250">PageRouter.resolve</span> (<span
+                      class="text-cyan-400 underline">router.ts</span
+                    >:<span class="text-amber-450 font-bold">89</span>)
+                  </p>
+                  <p>
+                    at <span class="text-yellow-250">SystemHandler.execute</span
+                    > (<span class="text-cyan-400 underline">core.ts</span
+                    >:<span class="text-amber-450 font-bold">{code}</span>)
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bold Fatal Exception Line -->
+            <div
+              class="flex items-center gap-2.5 border-t border-white/4 pt-2.5"
+            >
+              <span
+                class="font-black tracking-wider text-rose-500 uppercase select-none"
+                >[FATAL]</span
+              >
+              <span
+                class="font-bold text-white underline decoration-rose-500/50"
+                >{meta.badge}</span
+              >
+            </div>
+
+            <!-- Zsh active input prompt row -->
+            <div class="flex items-center gap-1.5 border-t border-white/4 pt-2">
+              <span class="text-emerald-450 font-bold select-none"
+                >ttn@system</span
+              >
+              <span class="text-slate-600 select-none">:</span>
+              <span class="text-sky-400 select-none">~/tibatibangoding</span>
+              <span class="font-medium text-slate-600 select-none">(</span>
+              <span class="font-bold text-pink-400 select-none">main</span>
+              <span class="font-medium text-slate-600 select-none">)</span>
+              <span class="ml-0.5 font-bold text-slate-500 select-none">$</span>
+              <span class="ml-1 font-bold text-slate-400 select-none">_</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clean Symmetrical Solid CTA Button -->
+        <div class="mt-8 flex justify-center">
+          <a
+            href="/"
+            class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-2 font-bold tracking-wide text-white transition-all duration-205 hover:bg-blue-500 active:scale-[0.98] sm:w-auto"
+          >
+            Kembali ke Beranda
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

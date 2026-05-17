@@ -1,0 +1,22 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import ErrorState from "../components/ErrorState.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+---
+
+<!doctype html>
+<html lang="id" class="dark">
+  <head>
+    <BaseHead
+      title={`Halaman Tidak Ditemukan - ${SITE_TITLE}`}
+      description={SITE_DESCRIPTION}
+    />
+  </head>
+  <body
+    class="selection:bg-blue-600/30 selection:text-blue-300 bg-slate-50 dark:bg-dark-900"
+  >
+    <main>
+      <ErrorState code={404} />
+    </main>
+  </body>
+</html>
