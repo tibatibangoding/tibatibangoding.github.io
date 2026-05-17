@@ -1,0 +1,80 @@
+---
+
+---
+
+<div
+  class="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/50 p-4 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/40"
+>
+  <div
+    class="pointer-events-none absolute inset-0 bg-linear-to-br from-white/1 via-transparent to-transparent"
+  >
+  </div>
+
+  <!-- Info Overlay on top of the Map -->
+  <div class="relative z-10 mb-4 flex flex-col gap-2 p-2">
+    <div class="flex items-center gap-2">
+      <div class="rounded-lg bg-blue-500/10 p-2 text-blue-500">
+        <svg
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+          ></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        </svg>
+      </div>
+      <div>
+        <h3 class="text-lg font-extrabold text-slate-950 dark:text-white">
+          Lokasi Kami
+        </h3>
+        <p class="text-xs font-semibold text-slate-600 dark:text-slate-400">
+          Malang, Jawa Timur, Indonesia
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Map Container -->
+  <div
+    class="relative h-[480px] w-full overflow-hidden rounded-2xl border border-slate-200/50 shadow-inner dark:border-white/5"
+  >
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126438.28723555513!2d112.5617424683525!3d-7.97863947477546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd628220fe41369%3A0x301127e6161df20!2sMalang%2C%20Kota%20Malang%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+      width="100%"
+      height="100%"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      class="map-iframe h-full w-full transition-all duration-500 ease-in-out"
+    ></iframe>
+
+    <!-- Cyberpunk Decorative Overlay Grid -->
+    <div
+      class="pointer-events-none absolute inset-0 rounded-2xl border border-blue-500/10"
+    >
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Standard beautiful gray scaling map for Light theme */
+  .map-iframe {
+    filter: grayscale(0.2) contrast(1.05);
+  }
+
+  /* Ultra-sleek premium cyberpunk map for Dark theme */
+  :global(.dark) .map-iframe {
+    filter: grayscale(0.9) invert(0.92) contrast(1.1) brightness(0.9)
+      hue-rotate(180deg);
+  }
+</style>

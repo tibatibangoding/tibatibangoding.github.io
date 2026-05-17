@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  borderColorHoverClass: string;
+  overlayGradientFromClass: string;
+  iconColorClass: string;
+}
+
+const {
+  title,
+  borderColorHoverClass,
+  overlayGradientFromClass,
+  iconColorClass,
+} = Astro.props;
+---
+
+<div
+  class={`group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white/50 p-6 shadow-xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 dark:border-white/6 dark:bg-slate-900/40 ${borderColorHoverClass}`}
+>
+  <div
+    class={`pointer-events-none absolute inset-0 bg-linear-to-br ${overlayGradientFromClass} via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+  >
+  </div>
+  <div class="flex items-start gap-4">
+    <div
+      class={`rounded-xl border border-slate-200/80 bg-slate-50 p-3.5 shadow-inner transition-transform duration-350 group-hover:scale-105 dark:border-white/4 dark:bg-slate-950/80 ${iconColorClass}`}
+    >
+      <slot name="icon" />
+    </div>
+    <div class="flex-1 space-y-2">
+      <h3
+        class="text-lg font-bold text-slate-950 transition-colors dark:text-white"
+      >
+        {title}
+      </h3>
+      <slot />
+    </div>
+  </div>
+</div>
