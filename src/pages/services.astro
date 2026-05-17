@@ -2,445 +2,49 @@
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import Top from "../components/Pages/Services/Top.astro";
+import ServicesSection from "../components/Pages/Services/Services.astro";
+import Clients from "../components/Pages/Services/Clients.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import CallToAction from "../components/Common/CallToAction.astro";
 ---
 
 <!doctype html>
 <html lang="id" class="dark">
   <head>
     <BaseHead
-      title={`Jasa & Layanan - ${SITE_TITLE}`}
+      title={`Jasa & Layanan Kami - ${SITE_TITLE}`}
       description={SITE_DESCRIPTION}
     />
   </head>
   <body class="selection:bg-blue-600/30 selection:text-blue-300">
     <Header />
 
-    <main
-      class="relative mx-auto max-w-[1500px] px-4 pt-32 pb-24 sm:px-6 lg:px-8"
-    >
+    <main class="relative w-full pt-32 pb-24">
       <!-- Glow Accent -->
       <div
         class="pointer-events-none absolute top-10 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-indigo-600/5 blur-[120px]"
       >
       </div>
 
-      <div class="relative z-10 mx-auto max-w-[1500px] space-y-20">
-        <!-- Header -->
-        <div class="space-y-4 text-center">
-          <div
-            class="text-xs font-semibold tracking-widest text-blue-400 uppercase"
-          >
-            Layanan Premium
-          </div>
-          <h1 class="text-4xl font-extrabold text-white sm:text-5xl">
-            Solusi IT & Pengembangan Aplikasi
-          </h1>
-          <p class="mx-auto max-w-2xl text-lg text-gray-400">
-            Kami menghadirkan solusi teknologi mutakhir dengan kinerja tinggi
-            untuk memperkuat digitalisasi bisnis Anda.
-          </p>
+      <div class="relative space-y-24">
+        <div class="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
+          <Top />
         </div>
 
-        <!-- Service Details Section -->
-        <div class="space-y-16">
-          <!-- Jasa Website -->
-          <div
-            id="website"
-            class="glass-panel scroll-mt-28 space-y-6 rounded-3xl border border-white/5 p-8 sm:p-12"
-          >
-            <div class="flex items-center justify-between">
-              <div
-                class="flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-600/10 text-blue-500"
-              >
-                <svg
-                  class="h-7 w-7"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg
-                >
-              </div>
-              <span
-                class="rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold tracking-wider text-blue-500 uppercase"
-                >Populer</span
-              >
-            </div>
-            <div class="space-y-3">
-              <h3 class="text-2xl font-bold text-white sm:text-3xl">
-                1. Pembuatan Website Premium & landing Page
-              </h3>
-              <p class="text-sm leading-relaxed text-gray-400">
-                Kami membangun website company profile dan landing page dengan
-                optimalisasi tinggi (SEO & Kecepatan Load). Menggunakan
-                framework termodern seperti Astro, React, dan Tailwind CSS untuk
-                menjamin website Anda beroperasi kurang dari 0.5 detik.
-              </p>
-            </div>
-            <div
-              class="grid grid-cols-1 gap-4 text-xs text-gray-300 sm:grid-cols-2"
-            >
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>SEO & Schema Markup Google Terintegrasi</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Aman dari serangan DDoS & SSL Gratis</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Penuh Fitur Kustom Sesuai Permintaan</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Hosting Cloud Premium Berkecepatan Tinggi</span>
-              </div>
-            </div>
-          </div>
+        <ServicesSection />
 
-          <!-- Jasa App -->
-          <div
-            id="app"
-            class="glass-panel scroll-mt-28 space-y-6 rounded-3xl border border-white/5 p-8 sm:p-12"
-          >
-            <div
-              class="flex h-14 w-14 items-center justify-center rounded-2xl border border-indigo-500/20 bg-indigo-600/10 text-indigo-500"
-            >
-              <svg
-                class="h-7 w-7"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                ></path></svg
-              >
-            </div>
-            <div class="space-y-3">
-              <h3 class="text-2xl font-bold text-white sm:text-3xl">
-                2. Aplikasi Mobile & Desktop Kustom
-              </h3>
-              <p class="text-sm leading-relaxed text-gray-400">
-                Menyediakan layanan pembuatan aplikasi Android, iOS, dan Desktop
-                lintas platform (Cross-platform) menggunakan React Native dan
-                Flutter. Kami menghadirkan database stabil dan real-time cloud
-                data sinkronisasi untuk menjamin kelancaran aktivitas bisnis
-                harian Anda.
-              </p>
-            </div>
-            <div
-              class="grid grid-cols-1 gap-4 text-xs text-gray-300 sm:grid-cols-2"
-            >
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Rilis di Google Play Store & Apple App Store</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Integrasi Payment Gateway Otomatis (Midtrans, dll)</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Push Notification Realtime & User Tracking</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Skema Database Skala Besar yang Cepat</span>
-              </div>
-            </div>
-          </div>
+        <Clients />
 
-          <!-- Jasa IT Solutions -->
-          <div
-            id="it-consulting"
-            class="glass-panel scroll-mt-28 space-y-6 rounded-3xl border border-white/5 p-8 sm:p-12"
-          >
-            <div
-              class="flex h-14 w-14 items-center justify-center rounded-2xl border border-purple-500/20 bg-purple-600/10 text-purple-500"
-            >
-              <svg
-                class="h-7 w-7"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                ></path></svg
-              >
-            </div>
-            <div class="space-y-3">
-              <h3 class="text-2xl font-bold text-white sm:text-3xl">
-                3. Solusi IT Bisnis (ERP/POS/CRM) & Otomatisasi
-              </h3>
-              <p class="text-sm leading-relaxed text-gray-400">
-                Optimalkan produktivitas operasional kantor Anda melalui sistem
-                terintegrasi. Kami membuat custom dashboard ERP untuk manajemen
-                data, CRM untuk pelayanan pelanggan, dan program Point of Sales
-                (Kasir) kustom yang sinkron dengan inventory pergudangan Anda.
-              </p>
-            </div>
-            <div
-              class="grid grid-cols-1 gap-4 text-xs text-gray-300 sm:grid-cols-2"
-            >
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Otomatisasi Laporan Keuangan & Stok Barang</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Analisa Data Penjualan Grafis Interaktif</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Hak Akses Bertingkat (Admin, Kasir, Owner)</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Migrasi Data Legacy Secara Aman</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Jasa UI/UX -->
-          <div
-            id="uiux"
-            class="glass-panel scroll-mt-28 space-y-6 rounded-3xl border border-white/5 p-8 sm:p-12"
-          >
-            <div
-              class="flex h-14 w-14 items-center justify-center rounded-2xl border border-rose-500/20 bg-rose-600/10 text-rose-500"
-            >
-              <svg
-                class="h-7 w-7"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                ></path></svg
-              >
-            </div>
-            <div class="space-y-3">
-              <h3 class="text-2xl font-bold text-white sm:text-3xl">
-                4. UI/UX Research & Visual Mockup Design
-              </h3>
-              <p class="text-sm leading-relaxed text-gray-400">
-                Sebelum membangun code, kami merancang visual aplikasi terbaik
-                untuk kenyamanan pengguna Anda. Kami menyediakan prototype
-                fungsional di Figma yang interaktif, memudahkan Anda menguji dan
-                menyempurnakan alur pengguna sebelum mulai tahap koding.
-              </p>
-            </div>
-            <div
-              class="grid grid-cols-1 gap-4 text-xs text-gray-300 sm:grid-cols-2"
-            >
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Desain Responsif untuk Mobile & Desktop</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Prototype Figma yang Bisa Diklik</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Brand Guideline & Asset Design Terintegrasi</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-4 w-4 text-emerald-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-                <span>Riset Perilaku Pengguna Kompetitor</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Simple Final CTA -->
-        <div class="space-y-6 pt-10 text-center">
-          <h3 class="text-2xl font-bold text-white">Tertarik Bekerjasama?</h3>
-          <p class="mx-auto max-w-lg text-sm leading-relaxed text-gray-400">
-            Silakan jadwalkan konsultasi gratis atau kirimkan rincian kebutuhan
-            proyek Anda agar tim kami segera memproses kalkulasi penawaran
-            terbaik.
-          </p>
-          <a
-            href="/#contact"
-            class="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-base font-semibold text-white shadow-[0_0_20px_-5px_rgba(59,130,246,0.5)] transition-all duration-300 hover:from-blue-500 hover:to-indigo-500"
-          >
-            Mulai Hubungi Kami
-          </a>
+        <div class="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
+          <CallToAction
+            title="Tertarik Bekerjasama?"
+            subtitle="Silakan jadwalkan konsultasi gratis atau kirimkan rincian kebutuhan proyek Anda agar tim kami segera memproses kalkulasi penawaran terbaik."
+            primaryText="Mulai Hubungi Kami"
+            primaryLink="/contact"
+            secondaryText="Lihat Proyek Lainnya"
+            secondaryLink="/projects"
+          />
         </div>
       </div>
     </main>

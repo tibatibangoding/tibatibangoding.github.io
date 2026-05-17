@@ -1,0 +1,92 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  primaryText?: string;
+  primaryHref?: string;
+  primaryLink?: string;
+  secondaryText?: string;
+  secondaryHref?: string;
+  secondaryLink?: string;
+}
+
+const {
+  title = "Mari Bangun Aplikasi Impian Anda Bersama Kami",
+  subtitle = "TTN menghadirkan solusi teknologi mutakhir dengan kinerja tinggi untuk mendigitalisasi dan meningkatkan skala bisnis Anda ke level berikutnya.",
+  primaryText = "Konsultasi Gratis Sekarang",
+  primaryHref,
+  primaryLink,
+  secondaryText = "Lihat Layanan Kami",
+  secondaryHref,
+  secondaryLink,
+} = Astro.props;
+
+const finalPrimaryHref = primaryHref || primaryLink || "/contact";
+const finalSecondaryHref = secondaryHref || secondaryLink || "/services";
+---
+
+<section class="relative overflow-hidden py-16 sm:py-24">
+  {/* Modern Ambient Radial Glow Backdrops */}
+  <div
+    class="pointer-events-none absolute top-1/2 left-1/2 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600/5 blur-[120px] dark:bg-blue-600/10"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute right-10 bottom-0 h-[250px] w-[250px] rounded-full bg-indigo-600/5 blur-[80px] dark:bg-indigo-600/8"
+  >
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
+    <div
+      class="dark:bg-dark-900/60 relative overflow-hidden rounded-3xl border border-slate-200/80 bg-slate-50/50 p-8 text-center shadow-2xl backdrop-blur-md sm:p-16 dark:border-white/10"
+    >
+      {/* Decorative inner glow overlay */}
+      <div
+        class="pointer-events-none absolute -inset-px rounded-3xl bg-radial from-blue-500/5 via-transparent to-transparent opacity-100 dark:from-blue-500/10"
+      >
+      </div>
+
+      <div class="relative z-10 mx-auto max-w-3xl space-y-6">
+        <h2
+          class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white"
+        >
+          {title}
+        </h2>
+        <p
+          class="mx-auto max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg dark:text-gray-400"
+        >
+          {subtitle}
+        </p>
+
+        <div
+          class="flex flex-col items-center justify-center gap-4 pt-6 sm:flex-row"
+        >
+          <a
+            href={finalPrimaryHref}
+            class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-base font-semibold text-white shadow-[0_0_20px_-5px_rgba(59,130,246,0.5)] transition-all duration-300 hover:from-blue-500 hover:to-indigo-500 active:scale-95 sm:w-auto"
+          >
+            {primaryText}
+            <svg
+              class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+            </svg>
+          </a>
+          <a
+            href={finalSecondaryHref}
+            class="inline-flex w-full items-center justify-center rounded-2xl border border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition-all duration-300 hover:bg-slate-50 hover:text-slate-900 active:scale-95 sm:w-auto dark:border-white/10 dark:bg-white/5 dark:text-gray-300 dark:hover:bg-white/10 dark:hover:text-white"
+          >
+            {secondaryText}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
