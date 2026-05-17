@@ -1,0 +1,142 @@
+---
+interface Props {
+  categories: string[];
+}
+
+const { categories } = Astro.props;
+---
+
+<div class="space-y-8">
+  <!-- Search Input Wrapper -->
+  <div class="relative mx-auto max-w-5xl">
+    <div
+      class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 dark:text-slate-500"
+    >
+      <svg
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2.5"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+      </svg>
+    </div>
+    <input
+      type="text"
+      id="blog-search"
+      placeholder="Cari artikel berdasarkan judul atau deskripsi..."
+      class="w-full rounded-2xl border border-slate-200/80 bg-white/50 py-3.5 pr-4 pl-12 text-sm font-semibold text-slate-800 placeholder-slate-400 shadow-lg outline-hidden backdrop-blur-xl transition-all duration-300 focus:border-blue-500/30 focus:ring-4 focus:ring-blue-500/5 dark:border-white/6 dark:bg-slate-900/40 dark:text-white dark:placeholder-slate-500 dark:focus:border-blue-500/30"
+    />
+  </div>
+
+  <!-- Category Pills Filter -->
+  <div class="flex flex-wrap items-center justify-center gap-2">
+    <button
+      data-category="all"
+      class="category-btn rounded-xl border border-blue-500 bg-blue-600 px-4 py-2 text-xs font-bold text-white shadow-md transition-all duration-300"
+    >
+      Semua Artikel
+    </button>
+    {
+      categories.map((category) => (
+        <button
+          data-category={category}
+          class="category-btn rounded-xl border border-slate-200/80 bg-white/50 px-4 py-2 text-xs font-bold text-slate-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 dark:border-white/5 dark:bg-slate-900/40 dark:text-slate-400 dark:hover:border-white/10 dark:hover:text-slate-300"
+        >
+          {category}
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  function initSearch() {
+    const searchInput = document.getElementById(
+      "blog-search",
+    ) as HTMLInputElement | null;
+    const categoryButtons = document.querySelectorAll(".category-btn");
+    const articles = document.querySelectorAll("article[data-post-card]");
+
+    let currentSearch = "";
+    let currentCategory = "all";
+
+    function filterPosts() {
+      articles.forEach((article) => {
+        const title = article.getAttribute("data-title")?.toLowerCase() || "";
+        const desc =
+          article.getAttribute("data-description")?.toLowerCase() || "";
+        const category =
+          article.getAttribute("data-category")?.toLowerCase() || "";
+
+        const matchesSearch =
+          title.includes(currentSearch) || desc.includes(currentSearch);
+        const matchesCategory =
+          currentCategory === "all" || category === currentCategory;
+
+        if (matchesSearch && matchesCategory) {
+          (article as HTMLElement).style.display = "";
+        } else {
+          (article as HTMLElement).style.display = "none";
+        }
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        currentSearch = (e.target as HTMLInputElement).value.toLowerCase();
+        filterPosts();
+      });
+    }
+
+    categoryButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        categoryButtons.forEach((b) => {
+          b.classList.remove(
+            "bg-blue-600",
+            "text-white",
+            "border-blue-500",
+            "shadow-md",
+          );
+          b.classList.add(
+            "border-slate-200/80",
+            "bg-white/50",
+            "text-slate-600",
+            "dark:border-white/5",
+            "dark:bg-slate-900/40",
+            "dark:text-slate-400",
+          );
+        });
+
+        btn.classList.add(
+          "bg-blue-600",
+          "text-white",
+          "border-blue-500",
+          "shadow-md",
+        );
+        btn.classList.remove(
+          "border-slate-200/80",
+          "bg-white/50",
+          "text-slate-600",
+          "dark:border-white/5",
+          "dark:bg-slate-900/40",
+          "dark:text-slate-400",
+        );
+
+        currentCategory =
+          btn.getAttribute("data-category")?.toLowerCase() || "all";
+        filterPosts();
+      });
+    });
+  }
+
+  // Run on page load
+  initSearch();
+
+  // Support Astro view transitions / document load
+  document.addEventListener("astro:page-load", initSearch);
+</script>
