@@ -1,0 +1,475 @@
+---
+// Clients & Partners infinite marquee section for the home page
+---
+
+<section
+  id="clients"
+  class="dark:bg-dark-900 relative overflow-hidden border-b border-slate-200 bg-slate-50 py-24 transition-colors duration-300 dark:border-white/5"
+>
+  <div class="relative z-10 mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
+    <!-- Top Content Part: Grid layout matching mockup exactly -->
+    <div
+      class="mb-16 grid grid-cols-1 items-end gap-8 lg:grid-cols-12 lg:gap-16"
+    >
+      <!-- Left Column: Pre-title and large highlighted Title -->
+      <div class="space-y-4 lg:col-span-7">
+        <h3
+          class="text-sm font-semibold tracking-widest text-blue-500 uppercase"
+        >
+          Klien Kami
+        </h3>
+        <h2
+          class="text-3xl leading-tight font-extrabold tracking-tight text-slate-900 transition-colors duration-300 sm:text-5xl dark:text-white"
+        >
+          Kolaborasi & <span class="text-blue-500">Kepercayaan</span> Lintas Sektor.
+        </h2>
+      </div>
+
+      <!-- Right Column: Description and bulleted Stat count -->
+      <div class="space-y-6 lg:col-span-5">
+        <p
+          class="text-base leading-relaxed font-light text-slate-600 transition-colors duration-300 sm:text-lg dark:text-gray-400"
+        >
+          Dari startup teknologi, korporasi manufaktur, hingga institusi daerah
+          — kami mengerjakan berbagai proyek lintas sektor dengan keandalan
+          teknologi premium.
+        </p>
+        <div
+          class="flex items-center gap-2 text-sm text-slate-700 transition-colors duration-300 dark:text-gray-300"
+        >
+          <span class="h-2 w-2 animate-pulse rounded-full bg-blue-500"></span>
+          <span
+            ><strong class="font-semibold text-blue-500">16+</strong> klien terdaftar</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Content Part: Double-Row Scrolling Logo Cards -->
+    <div class="space-y-6">
+      <!-- Row 1: Scrolls to the Left -->
+      <div class="mask-gradient relative flex w-full overflow-hidden py-2">
+        <!-- Original Marquee Container (No justify-around to ensure constant gap) -->
+        <div
+          class="animate-marquee-left flex shrink-0 items-center gap-6 pr-6 whitespace-nowrap"
+        >
+          <!-- Card 1: Aetheric Tech -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600/20 text-xs font-black text-blue-400"
+                >AT</span
+              >
+              AETHERIC TECH
+            </span>
+          </div>
+
+          <!-- Card 2: Apex Labs -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600/20 text-xs text-emerald-400"
+                >🧬</span
+              >
+              APEX LABS
+            </span>
+          </div>
+
+          <!-- Card 3: Starlight Corp -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-rose-600/20 text-xs font-black text-rose-400"
+                >SC</span
+              >
+              STARLIGHT CORP
+            </span>
+          </div>
+
+          <!-- Card 4: Vortex Digital -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-600/20 text-xs font-black text-cyan-400"
+                >VD</span
+              >
+              VORTEX DIGITAL
+            </span>
+          </div>
+
+          <!-- Card 5: Zephyr Media -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-green-600/20 text-xs text-green-400"
+                >🍃</span
+              >
+              ZEPHYR MEDIA
+            </span>
+          </div>
+
+          <!-- Card 6: Horizon Systems -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-amber-600/20 text-xs text-amber-400"
+                >☕</span
+              >
+              HORIZON SYS
+            </span>
+          </div>
+        </div>
+
+        <!-- Duplicate Marquee Container (No justify-around to ensure constant gap) -->
+        <div
+          class="animate-marquee-left flex shrink-0 items-center gap-6 pr-6 whitespace-nowrap"
+          aria-hidden="true"
+        >
+          <!-- Card 1 -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600/20 text-xs font-black text-blue-400"
+                >AT</span
+              >
+              AETHERIC TECH
+            </span>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600/20 text-xs text-emerald-400"
+                >🧬</span
+              >
+              APEX LABS
+            </span>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-rose-600/20 text-xs font-black text-rose-400"
+                >SC</span
+              >
+              STARLIGHT CORP
+            </span>
+          </div>
+          <!-- Card 4 -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-600/20 text-xs font-black text-cyan-400"
+                >VD</span
+              >
+              VORTEX DIGITAL
+            </span>
+          </div>
+          <!-- Card 5 -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-green-600/20 text-xs text-green-400"
+                >🍃</span
+              >
+              ZEPHYR MEDIA
+            </span>
+          </div>
+          <!-- Card 6 -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-amber-600/20 text-xs text-amber-400"
+                >☕</span
+              >
+              HORIZON SYS
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Scrolls to the Right -->
+      <div class="mask-gradient relative flex w-full overflow-hidden py-2">
+        <!-- Original Marquee Container (No justify-around to ensure constant gap) -->
+        <div
+          class="animate-marquee-right flex shrink-0 items-center gap-6 pr-6 whitespace-nowrap"
+        >
+          <!-- Card 1: Nova Creative -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-amber-500/20 text-xs font-black text-amber-400"
+                >NC</span
+              >
+              NOVA CREATIVE
+            </span>
+          </div>
+
+          <!-- Card 2: Synapse Labs -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-teal-500/20 text-xs font-black text-teal-400"
+                >SL</span
+              >
+              SYNAPSE LABS
+            </span>
+          </div>
+
+          <!-- Card 3: Solas Group -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/20 text-xs text-emerald-400"
+                >💚</span
+              >
+              SOLAS GROUP
+            </span>
+          </div>
+
+          <!-- Card 4: Echo Studio -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-orange-500/20 text-xs text-orange-400"
+                >☕</span
+              >
+              ECHO STUDIO
+            </span>
+          </div>
+
+          <!-- Card 5: Helix Industries -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-xs font-black text-blue-400"
+                >HI</span
+              >
+              HELIX IND
+            </span>
+          </div>
+
+          <!-- Card 6: Pulse Security -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-red-500/20 text-xs font-black text-red-400"
+                >PS</span
+              >
+              PULSE SEC
+            </span>
+          </div>
+        </div>
+
+        <!-- Duplicate Marquee Container (No justify-around to ensure constant gap) -->
+        <div
+          class="animate-marquee-right flex shrink-0 items-center gap-6 pr-6 whitespace-nowrap"
+          aria-hidden="true"
+        >
+          <!-- Card 1 -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-amber-500/20 text-xs font-black text-amber-400"
+                >NC</span
+              >
+              NOVA CREATIVE
+            </span>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-teal-500/20 text-xs font-black text-teal-400"
+                >SL</span
+              >
+              SYNAPSE LABS
+            </span>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/20 text-xs text-emerald-400"
+                >💚</span
+              >
+              SOLAS GROUP
+            </span>
+          </div>
+          <!-- Card 4 -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-orange-500/20 text-xs text-orange-400"
+                >☕</span
+              >
+              ECHO STUDIO
+            </span>
+          </div>
+          <!-- Card 5 -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-xs font-black text-blue-400"
+                >HI</span
+              >
+              HELIX IND
+            </span>
+          </div>
+          <!-- Card 6 -->
+          <div
+            class="flex h-20 w-56 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-8 py-6 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 dark:border-white/5 dark:bg-white/2 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/4"
+          >
+            <span
+              class="flex items-center gap-2 text-lg font-bold tracking-wider text-slate-500 transition-colors duration-200 hover:text-slate-800 dark:text-gray-400 dark:hover:text-white"
+            >
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-red-500/20 text-xs font-black text-red-400"
+                >PS</span
+              >
+              PULSE SEC
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes marquee-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes marquee-right {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  .animate-marquee-left {
+    animation: marquee-left 35s linear infinite;
+  }
+
+  .animate-marquee-right {
+    animation: marquee-right 35s linear infinite;
+  }
+
+  /* Fade mask effect for sides of marquee */
+  .mask-gradient {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 15%,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 15%,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+</style>

@@ -1,0 +1,377 @@
+---
+import HeaderLink from "./Common/HeaderLink.astro";
+---
+
+<header class="fixed top-6 right-0 left-0 z-50 flex justify-center px-4">
+  <div
+    class="glassNavbar flex w-full max-w-[1500px] items-center justify-between px-6 py-3"
+  >
+    <!-- Logo Section -->
+    <div class="flex items-center gap-3">
+      <a href="/" class="group flex w-[100px] items-center gap-3">
+        <!-- Dark Mode Logo -->
+        <img
+          src="/assets/img/logo-no-text-white.png"
+          alt="TTN Logo White"
+          class="logo-white h-14 w-full rounded-xl object-contain transition-all duration-300 group-hover:scale-105"
+        />
+        <!-- Light Mode Logo -->
+        <img
+          src="/assets/img/logo-no-text-black.png"
+          alt="TTN Logo Black"
+          class="logo-black h-14 w-full rounded-xl object-contain transition-all duration-300 group-hover:scale-105"
+        />
+      </a>
+    </div>
+
+    <!-- Desktop Menu (glassMenu styled) -->
+    <div class="hidden items-center gap-1 md:flex">
+      <HeaderLink
+        href="/"
+        class="rounded-full px-5 py-2 text-sm font-medium text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white"
+        >Beranda</HeaderLink
+      >
+      <HeaderLink
+        href="/about"
+        class="rounded-full px-5 py-2 text-sm font-medium text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white"
+        >Tentang</HeaderLink
+      >
+      <HeaderLink
+        href="/services"
+        class="rounded-full px-5 py-2 text-sm font-medium text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white"
+        >Layanan</HeaderLink
+      >
+      <HeaderLink
+        href="/technologies"
+        class="rounded-full px-5 py-2 text-sm font-medium text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white"
+        >Teknologi</HeaderLink
+      >
+      <HeaderLink
+        href="/projects"
+        class="rounded-full px-5 py-2 text-sm font-medium text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white"
+        >Proyek</HeaderLink
+      >
+      <HeaderLink
+        href="/contact"
+        class="rounded-full px-5 py-2 text-sm font-medium text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white"
+        >Kontak</HeaderLink
+      >
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex items-center gap-2">
+      <!-- Dark/Light Theme Toggle (styled like glassBtn) -->
+      <button
+        id="theme-toggle"
+        type="button"
+        class="glassBtn flex cursor-pointer items-center justify-center rounded-full p-2 text-orange-400 transition-all duration-300 dark:text-white"
+        aria-label="Toggle Theme"
+      >
+        <!-- Sun Icon -->
+        <svg
+          id="sun-icon"
+          class="h-5 w-5 transition-transform duration-300 hover:rotate-45"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"
+          ></path>
+        </svg>
+        <!-- Moon Icon -->
+        <svg
+          id="moon-icon"
+          class="hidden h-5 w-5 transition-transform duration-300 hover:-rotate-12"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          ></path>
+        </svg>
+      </button>
+
+      <!-- Mobile hamburger toggle button -->
+      <button
+        id="mobile-menu-toggle"
+        class="p-2 text-slate-800 transition-colors hover:text-slate-950 md:hidden dark:text-gray-400 dark:hover:text-white"
+        aria-label="Toggle Menu"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div
+    id="mobile-menu"
+    class="dark:bg-dark-900/98 fixed inset-0 z-50 hidden flex-col items-center justify-center gap-8 bg-white/98 backdrop-blur-lg transition-colors duration-300 md:hidden"
+  >
+    <button
+      id="mobile-menu-close"
+      class="absolute top-8 right-8 p-2 text-slate-800 transition-colors hover:text-slate-950 dark:text-gray-400 dark:hover:text-white"
+      aria-label="Close Menu"
+    >
+      <svg
+        class="h-8 w-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <div
+      class="flex flex-col items-center gap-6 text-xl font-medium tracking-wide"
+    >
+      <a
+        href="/"
+        class="text-slate-600 transition-colors hover:text-slate-900 dark:text-gray-300 dark:hover:text-white"
+        >Beranda</a
+      >
+      <a
+        href="/about"
+        class="text-slate-600 transition-colors hover:text-slate-900 dark:text-gray-300 dark:hover:text-white"
+        >Tentang</a
+      >
+      <a
+        href="/services"
+        class="text-slate-600 transition-colors hover:text-slate-900 dark:text-gray-300 dark:hover:text-white"
+      >
+        Layanan
+      </a>
+      <a
+        href="/technologies"
+        class="text-slate-600 transition-colors hover:text-slate-900 dark:text-gray-300 dark:hover:text-white"
+      >
+        Teknologi
+      </a>
+      <a
+        href="/projects"
+        class="text-slate-600 transition-colors hover:text-slate-900 dark:text-gray-300 dark:hover:text-white"
+      >
+        Proyek
+      </a>
+      <a
+        href="/contact"
+        class="text-slate-600 transition-colors hover:text-slate-900 dark:text-gray-300 dark:hover:text-white"
+        >Kontak</a
+      >
+    </div>
+  </div>
+</header>
+
+<style>
+  .logo-white {
+    display: none;
+  }
+  .logo-black {
+    display: block;
+  }
+  :global(.dark) .logo-white {
+    display: block;
+  }
+  :global(.dark) .logo-black {
+    display: none;
+  }
+
+  .glassNavbar {
+    width: 100%;
+    border-radius: 9999px;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow:
+      inset 0 1px 2px rgba(255, 255, 255, 0.8),
+      0 8px 32px 0 rgba(15, 23, 42, 0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  :global(.dark) .glassNavbar {
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.05),
+      0 12px 40px 0 rgba(0, 0, 0, 0.35);
+  }
+
+  .glassMenu {
+    border-radius: 9999px;
+    padding: 0.25rem 0.5rem;
+    background: rgba(0, 0, 0, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  :global(.dark) .glassMenu {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.04);
+  }
+
+  /* Glass Button styles */
+  .glassBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 9999px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  :global(.dark) .glassBtn {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.04);
+  }
+
+  .glassBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+  }
+</style>
+
+<script is:inline>
+  // Early check to load saved theme preference
+  const initSavedTheme = () => {
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+  initSavedTheme();
+
+  function initTheme() {
+    const themeToggle = document.getElementById("theme-toggle");
+    const html = document.documentElement;
+    const sunIcon = document.getElementById("sun-icon");
+    const moonIcon = document.getElementById("moon-icon");
+
+    if (!themeToggle || !sunIcon || !moonIcon) return;
+
+    // Apply current visual state of icons based on html class
+    const updateIcons = () => {
+      const isDark = html.classList.contains("dark");
+      if (isDark) {
+        sunIcon.classList.add("hidden");
+        moonIcon.classList.remove("hidden");
+      } else {
+        sunIcon.classList.remove("hidden");
+        moonIcon.classList.add("hidden");
+      }
+    };
+    updateIcons();
+
+    // Remove any existing event listeners to avoid memory leaks/double triggers
+    const newToggle = themeToggle.cloneNode(true);
+    themeToggle.parentNode.replaceChild(newToggle, themeToggle);
+
+    newToggle.addEventListener("click", () => {
+      const isCurrentlyDark = html.classList.contains("dark");
+      if (isCurrentlyDark) {
+        html.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      } else {
+        html.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      }
+      // Trigger icons update inside sunIcon and moonIcon from the cloned node reference
+      const newSun = newToggle.querySelector("#sun-icon");
+      const newMoon = newToggle.querySelector("#moon-icon");
+      if (html.classList.contains("dark")) {
+        newSun.classList.add("hidden");
+        newMoon.classList.remove("hidden");
+      } else {
+        newSun.classList.remove("hidden");
+        newMoon.classList.add("hidden");
+      }
+    });
+  }
+
+  function initMobileMenu() {
+    const toggleBtn = document.getElementById("mobile-menu-toggle");
+    const closeBtn = document.getElementById("mobile-menu-close");
+    const menuOverlay = document.getElementById("mobile-menu");
+
+    if (!toggleBtn || !closeBtn || !menuOverlay) return;
+
+    toggleBtn.addEventListener("click", () => {
+      menuOverlay.classList.remove("hidden");
+      menuOverlay.classList.add("flex");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      menuOverlay.classList.add("hidden");
+      menuOverlay.classList.remove("flex");
+    });
+
+    const links = menuOverlay.querySelectorAll("a");
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        menuOverlay.classList.add("hidden");
+        menuOverlay.classList.remove("flex");
+      });
+    });
+  }
+
+  // Initialize scripts
+  document.addEventListener("DOMContentLoaded", () => {
+    initTheme();
+    initMobileMenu();
+  });
+
+  // Support for browsers where DOM is already parsed
+  if (
+    document.readyState === "interactive" ||
+    document.readyState === "complete"
+  ) {
+    initTheme();
+    initMobileMenu();
+  }
+
+  // Support Astro View Transitions (just in case they are enabled)
+  document.addEventListener("astro:after-swap", () => {
+    initSavedTheme();
+    initTheme();
+    initMobileMenu();
+  });
+</script>

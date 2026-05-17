@@ -1,0 +1,201 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import Hero from "../components/Pages/Home/Hero.astro";
+import About from "../components/Pages/Home/About.astro";
+import Clients from "../components/Pages/Home/Clients.astro";
+import Services from "../components/Pages/Home/Services.astro";
+import Projects from "../components/Pages/Home/Projects.astro";
+---
+
+<!doctype html>
+<html lang="id" class="dark">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="selection:bg-blue-600/30 selection:text-blue-300">
+    <Header />
+
+    <Hero />
+
+    <About />
+
+    <Services />
+
+    <Clients />
+
+    <Projects />
+
+    <!-- Founder Section -->
+    <!-- <section class="bg-dark-900 relative py-24">
+      <div
+        class="pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600/5 blur-[120px]"
+      >
+      </div>
+
+      <div class="relative z-10 mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
+        <div
+          class="glass-panel flex flex-col items-center gap-12 rounded-3xl border border-white/10 p-8 sm:p-12 md:flex-row"
+        >
+          <div class="relative shrink-0">
+            <div
+              class="pointer-events-none absolute inset-0 scale-105 rotate-6 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 opacity-20"
+            >
+            </div>
+            <img
+              src="https://avatars.githubusercontent.com/u/83068205?v=4"
+              alt="Naufal Akbar Nugroho"
+              class="relative h-48 w-48 rounded-2xl border border-white/10 object-cover shadow-lg"
+            />
+          </div>
+          <div class="space-y-6 text-center md:text-left">
+            <div class="space-y-2">
+              <div
+                class="text-xs font-semibold tracking-wider text-blue-400 uppercase"
+              >
+                Meet the Founder
+              </div>
+              <h3 class="text-2xl font-extrabold text-white sm:text-3xl">
+                Naufal Akbar Nugroho
+              </h3>
+              <p class="text-sm text-gray-400">
+                Founder & CEO | Fullstack Web Developer
+              </p>
+            </div>
+            <p class="max-w-2xl leading-relaxed font-light text-gray-300">
+              "TTN didirikan dengan satu misi utama: membantu pemilik bisnis,
+              startup, dan UMKM mendapatkan produk digital berkualitas premium
+              dengan performa tinggi. Kami tidak hanya membuat code, kami
+              membangun solusi bisnis cerdas untuk membantu Anda mendominasi
+              industri."
+            </p>
+            <div
+              class="flex items-center justify-center gap-4 md:justify-start"
+            >
+              <a
+                href="https://github.com/nuflakbrr"
+                target="_blank"
+                class="flex items-center gap-1 text-xs text-gray-400 transition-colors hover:text-white"
+              >
+                GitHub
+              </a>
+              <span class="text-gray-600">•</span>
+              <a
+                href="https://linkedin.com/in/nuflakbrr"
+                target="_blank"
+                class="flex items-center gap-1 text-xs text-gray-400 transition-colors hover:text-white"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Beautiful Contact Section -->
+    <!-- <section
+      id="contact"
+      class="bg-dark-800/30 relative border-t border-white/5 py-24"
+    >
+      <div
+        class="pointer-events-none absolute bottom-0 left-1/2 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-blue-600/5 blur-[120px]"
+      >
+      </div>
+
+      <div class="relative z-10 mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
+        <div class="mb-16 space-y-4 text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+            Mulai Proyek Digital Anda
+          </h2>
+          <p class="mx-auto max-w-xl text-gray-400">
+            Diskusikan kebutuhan ide atau solusi IT bisnis Anda dengan tim kami.
+            Kami siap memvisualisasikannya menjadi aplikasi nyata.
+          </p>
+        </div>
+
+        <div
+          class="glass-panel rounded-3xl border border-white/10 p-8 shadow-2xl sm:p-12"
+        >
+          <form
+            class="space-y-6"
+            onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda telah terkirim. Tim kami akan menghubungi Anda segera.');"
+          >
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <div>
+                <label
+                  for="name"
+                  class="mb-2 block text-sm font-semibold text-white"
+                  >Nama Lengkap</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-gray-500 transition-all duration-300 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/30 focus:outline-none"
+                  placeholder="John Doe"
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="mb-2 block text-sm font-semibold text-white"
+                  >Email Bisnis</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-gray-500 transition-all duration-300 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/30 focus:outline-none"
+                  placeholder="john@company.com"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                for="service-type"
+                class="mb-2 block text-sm font-semibold text-white"
+                >Jenis Jasa</label
+              >
+              <select
+                id="service-type"
+                class="bg-dark-900 w-full rounded-xl border border-white/10 px-4 py-3 text-white transition-all duration-300 focus:border-blue-500/50 focus:outline-none"
+              >
+                <option value="website">Jasa Pembuatan Website</option>
+                <option value="app">Pembuatan Aplikasi Android / iOS</option>
+                <option value="enterprise"
+                  >Solusi IT Bisnis (ERP/POS/CRM)</option
+                >
+                <option value="uiux">Desain UI/UX & Konsultasi</option>
+              </select>
+            </div>
+            <div>
+              <label
+                for="message"
+                class="mb-2 block text-sm font-semibold text-white"
+                >Jelaskan Kebutuhan Anda</label
+              >
+              <textarea
+                id="message"
+                rows="4"
+                required
+                class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-gray-500 transition-all duration-300 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/30 focus:outline-none"
+                placeholder="Saya ingin membuat aplikasi booking layanan untuk bisnis salon kecantikan saya..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="inline-flex w-full cursor-pointer items-center justify-center rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-base font-semibold text-white shadow-[0_0_20px_-5px_rgba(59,130,246,0.5)] transition-all duration-300 hover:from-blue-500 hover:to-indigo-500 active:scale-95"
+            >
+              Kirim Kebutuhan Proyek
+            </button>
+          </form>
+        </div>
+      </div>
+    </section> -->
+
+    <Footer />
+  </body>
+</html>

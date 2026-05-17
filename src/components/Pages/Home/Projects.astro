@@ -1,0 +1,305 @@
+---
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects", (project) => {
+  return (
+    !project.data.draft &&
+    project.data.date &&
+    project.data.image &&
+    project.data.tags
+  );
+});
+
+// Sort by date (descending)
+const projects = allProjects.sort((a, b) => {
+  const dateA = a.data.date ? new Date(a.data.date).getTime() : 0;
+  const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
+  return dateB - dateA;
+});
+
+// Setup specific category pills exactly matching the mockup: All, Web, Android, iOS, Desktop
+const categories = ["All", "Web", "Android", "iOS", "Desktop"];
+---
+
+<section
+  id="projects"
+  class="dark:bg-dark-900 relative overflow-hidden border-b border-slate-200 bg-slate-50 py-24 transition-colors duration-300 dark:border-white/5"
+>
+  <div class="relative z-10 mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
+    <!-- Top Content Part: Left-aligned title with right-aligned capsule filters, styled exactly like About.astro -->
+    <div
+      class="mb-16 flex flex-col justify-between gap-8 lg:flex-row lg:items-end"
+    >
+      <div class="space-y-4">
+        <h3
+          class="text-sm font-semibold tracking-widest text-blue-500 uppercase"
+        >
+          Proyek Kami
+        </h3>
+        <h2
+          class="text-3xl leading-tight font-extrabold tracking-tight text-slate-900 transition-colors duration-300 sm:text-5xl dark:text-white"
+        >
+          Inovasi & <span class="text-blue-500">Karya Terbaik</span> Kami.
+        </h2>
+      </div>
+
+      <!-- Filter Capsule container matching mockup pill style with brand color alignment -->
+      <div
+        class="flex shrink-0 flex-wrap gap-1 self-start rounded-full border border-slate-200 bg-slate-100 p-1.5 transition-all duration-300 lg:self-end dark:border-white/5 dark:bg-white/2"
+      >
+        {
+          categories.map((cat, idx) => (
+            <button
+              data-filter={cat}
+              class={`filter-btn rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all duration-300 ${
+                idx === 0
+                  ? "bg-blue-600 text-white shadow-lg shadow-blue-600/20"
+                  : "text-slate-500 hover:bg-slate-200/50 hover:text-slate-900 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white"
+              }`}
+            >
+              {cat}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Projects Editorial News-Style Grid: Uses default stretch behavior to align bottoms perfectly down to the pixel -->
+    <div
+      class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12"
+      id="projects-grid"
+    >
+      {
+        projects.map((project, idx) => {
+          const { title, date, image, tags, link, category } = project.data;
+
+          // Match sub-headline to mockup categories
+          const subHeadline =
+            category === "Android"
+              ? "EMPOWERING ENTREPRENEURS"
+              : category === "Desktop"
+                ? "PROJECT MONITORING SOFTWARE"
+                : "STUDI KASUS";
+
+          return (
+            <article
+              data-category={category}
+              class={`project-card group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-slate-200/80 bg-white p-5 shadow-sm transition-all duration-500 hover:border-slate-300 hover:bg-slate-50/50 hover:shadow-md dark:border-white/5 dark:bg-white/1 dark:shadow-none dark:hover:border-white/10 dark:hover:bg-white/3 ${
+                idx === 0
+                  ? "md:col-span-2 lg:col-span-8 lg:row-span-2"
+                  : "md:col-span-1 lg:col-span-4 lg:row-span-1"
+              }`}
+            >
+              {/* Dynamic auto-growing image container:
+                - Card 1 (idx === 0) gets large aspect-[16/10] image.
+                - Card 2 & 3 (idx === 1, 2) get compact aspect-[22/10] images to stack perfectly.
+                - All other grid cards (idx >= 3) get standard large aspect-[16/10] images.
+            */}
+              <div
+                class={`relative mb-4 h-0 min-h-[220px] grow overflow-hidden rounded-2xl md:min-h-[260px] ${
+                  idx === 0
+                    ? "aspect-16/10 lg:min-h-[360px]"
+                    : idx === 1 || idx === 2
+                      ? "aspect-22/10 lg:min-h-[160px]"
+                      : "aspect-16/10 lg:min-h-[240px]"
+                }`}
+              >
+                <img
+                  src={image}
+                  alt={title}
+                  class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+
+                {/* Tag Pills floating bottom left inside image */}
+                <div class="absolute bottom-4 left-4 flex flex-wrap gap-2">
+                  {tags?.map((tag) => (
+                    <span class="rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-[10px] font-bold tracking-wider text-slate-600 uppercase shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-[#0c0c0e]/90 dark:text-gray-400">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Content Area: Subtitle + Title next to Circle Arrow Link */}
+              <div class="flex flex-col justify-end">
+                <div class="flex items-start justify-between gap-6">
+                  <div class="space-y-2">
+                    <span class="text-[10px] font-bold tracking-widest text-blue-500 uppercase">
+                      {subHeadline}
+                    </span>
+                    <h3
+                      class={`line-clamp-3 leading-tight font-extrabold text-slate-900 transition-colors duration-300 group-hover:text-blue-500 dark:text-white ${
+                        idx === 0
+                          ? "text-2xl sm:text-3xl"
+                          : "text-xl sm:text-2xl"
+                      }`}
+                    >
+                      {title}
+                    </h3>
+                  </div>
+
+                  <a
+                    href={link || "#"}
+                    target={link && link !== "#" ? "_blank" : undefined}
+                    rel={
+                      link && link !== "#" ? "noopener noreferrer" : undefined
+                    }
+                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-slate-700 shadow-lg transition-all duration-300 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white hover:shadow-blue-600/20 dark:border-white/10 dark:bg-white/5 dark:text-white"
+                    aria-label={`Lihat detail proyek ${title}`}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <!-- Centered "Lihat Semua Proyek" Link Button -->
+    <div class="mt-16 flex justify-center">
+      <a
+        href="/projects"
+        class="group inline-flex items-center gap-3 rounded-full border border-slate-200 bg-slate-100 px-8 py-4 text-sm font-semibold tracking-wide text-slate-700 shadow-lg transition-all duration-300 hover:border-blue-600 hover:bg-blue-600 hover:text-white hover:shadow-blue-600/20 dark:border-white/10 dark:bg-white/5 dark:text-white"
+      >
+        Lihat Semua Proyek
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Vanilla JS Filter Script inside Astro -->
+<script>
+  // Setup dynamic filtering
+  const buttons = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".project-card");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Remove active classes from all buttons
+      buttons.forEach((btn) => {
+        btn.classList.remove(
+          "bg-blue-600",
+          "text-white",
+          "shadow-lg",
+          "shadow-blue-600/20",
+        );
+        btn.classList.add(
+          "text-slate-500",
+          "hover:text-slate-900",
+          "hover:bg-slate-200/50",
+          "dark:text-gray-400",
+          "dark:hover:text-white",
+          "dark:hover:bg-white/5",
+        );
+      });
+
+      // Add active classes to clicked button
+      button.classList.add(
+        "bg-blue-600",
+        "text-white",
+        "shadow-lg",
+        "shadow-blue-600/20",
+      );
+      button.classList.remove(
+        "text-slate-500",
+        "hover:text-slate-900",
+        "hover:bg-slate-200/50",
+        "dark:text-gray-400",
+        "dark:hover:text-white",
+        "dark:hover:bg-white/5",
+      );
+
+      const filterValue = button.getAttribute("data-filter");
+
+      // Filter cards
+      cards.forEach((card) => {
+        const cardCategory = card.getAttribute("data-category");
+
+        if (filterValue === "All" || cardCategory === filterValue) {
+          card.classList.remove("hidden");
+          // Smooth fade in
+          setTimeout(() => {
+            card.classList.remove("opacity-0", "scale-95");
+            card.classList.add("opacity-100", "scale-100");
+          }, 10);
+        } else {
+          card.classList.add("opacity-0", "scale-95");
+          card.classList.remove("opacity-100", "scale-100");
+          // Add hidden after transition
+          setTimeout(() => {
+            card.classList.add("hidden");
+          }, 200);
+        }
+      });
+
+      // Recalculate grid spans dynamically based on visible cards
+      setTimeout(() => {
+        const visibleCards = Array.from(cards).filter(
+          (c) => !c.classList.contains("hidden"),
+        );
+
+        visibleCards.forEach((card, index) => {
+          // Reset all spans
+          card.classList.remove(
+            "lg:col-span-8",
+            "lg:col-span-4",
+            "lg:row-span-2",
+            "lg:row-span-1",
+            "md:col-span-2",
+            "md:col-span-1",
+          );
+
+          if (filterValue === "All") {
+            // Apply asymmetric spans with vertical row stacking
+            if (index === 0) {
+              card.classList.add(
+                "lg:col-span-8",
+                "lg:row-span-2",
+                "md:col-span-2",
+              );
+            } else {
+              card.classList.add(
+                "lg:col-span-4",
+                "lg:row-span-1",
+                "md:col-span-1",
+              );
+            }
+          } else {
+            // Keep clean uniform layout for single category filters
+            card.classList.add(
+              "lg:col-span-4",
+              "lg:row-span-1",
+              "md:col-span-1",
+            );
+          }
+        });
+      }, 210);
+    });
+  });
+</script>
+
+<style>
+  .project-card {
+    transition:
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.5s ease,
+      border-color 0.5s ease,
+      background-color 0.5s ease;
+  }
+</style>

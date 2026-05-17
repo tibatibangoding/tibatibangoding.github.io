@@ -1,0 +1,345 @@
+---
+import { getCollection, render } from "astro:content";
+
+const teamMembersRaw = await getCollection("teams");
+const teamMembers = teamMembersRaw.filter(
+  (member) => member.id !== "index" && member.data.active !== false,
+);
+
+// Sort to place Founder & CEO (Naufal Akbar Nugroho) first
+const sortedTeam = teamMembers.sort((a, b) => {
+  if (a.id.includes("naufal-akbar")) return -1;
+  if (b.id.includes("naufal-akbar")) return 1;
+  return a.data.title.localeCompare(b.data.title);
+});
+
+// Render the MDX contents for each team member
+const renderedTeam = await Promise.all(
+  sortedTeam.map(async (member) => {
+    const { Content } = await render(member);
+    return {
+      ...member,
+      Content,
+    };
+  }),
+);
+---
+
+<div class="space-y-12">
+  <!-- Interactive Grid Layout -->
+  <div
+    class="mx-auto grid max-w-6xl grid-cols-1 justify-center gap-8 sm:grid-cols-2 lg:grid-cols-3"
+  >
+    {
+      renderedTeam.map((member) => {
+        return (
+          <div
+            data-team-trigger={member.id}
+            class="glass-panel group relative flex cursor-pointer flex-col items-center rounded-3xl border border-black/5 p-8 text-center shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-blue-500/40 hover:shadow-blue-500/5 active:scale-[0.98] dark:border-white/10"
+          >
+            {/* Hover Glow Overlay */}
+            <div class="pointer-events-none absolute -inset-px rounded-3xl bg-radial from-blue-500/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+            {/* Photo */}
+            <div class="relative mb-6 shrink-0">
+              <div class="pointer-events-none absolute inset-0 scale-105 rotate-6 rounded-3xl bg-linear-to-tr from-blue-600 to-indigo-600 opacity-20 transition-transform duration-300 group-hover:rotate-12" />
+              <img
+                src={member.data.image}
+                alt={member.data.title}
+                class="relative h-56 w-56 rounded-3xl border border-black/10 object-cover shadow-md transition-all duration-300 group-hover:scale-105 dark:border-white/10"
+              />
+            </div>
+
+            {/* Name & Role */}
+            <div class="relative z-10 space-y-2">
+              <h4 class="text-xl font-bold text-gray-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
+                {member.data.title}
+              </h4>
+              <p class="text-xs font-semibold tracking-wide text-blue-600 uppercase dark:text-blue-400/80">
+                {member.data.position}
+              </p>
+            </div>
+
+            {/* Social Icons in Grid */}
+            <div class="relative z-20 mt-6 flex items-center justify-center gap-3">
+              {member.data.social?.map((s) => (
+                <a
+                  href={s.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={s.name}
+                  class="team-social-link flex h-8 w-8 items-center justify-center rounded-lg bg-black/5 text-gray-500 transition-all hover:bg-blue-600 hover:text-white dark:bg-white/5 dark:text-gray-400"
+                >
+                  {s.name === "github" && (
+                    <svg
+                      class="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                    </svg>
+                  )}
+                  {s.name === "linkedin" && (
+                    <svg
+                      class="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                  )}
+                  {s.name === "instagram" && (
+                    <svg
+                      class="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                  )}
+                  {s.name === "website" && (
+                    <svg
+                      class="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="2" y1="12" x2="22" y2="12" />
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+
+  <!-- Detail Modals Container -->
+  {
+    renderedTeam.map((member) => {
+      const { Content } = member;
+      return (
+        <div
+          id={`modal-${member.id}`}
+          data-team-modal
+          class="pointer-events-none fixed inset-0 z-9999 flex items-start justify-center overflow-y-auto bg-slate-950/40 p-4 pt-36 pb-20 opacity-0 backdrop-blur-md transition-all duration-300 sm:pt-28 dark:bg-black/75"
+        >
+          {/* Modal Card */}
+          <div class="dark:bg-dark-900/95 relative my-0 w-full max-w-2xl scale-95 space-y-6 rounded-3xl border border-slate-200/80 bg-white p-6 shadow-2xl transition-all duration-300 sm:p-10 dark:border-white/10">
+            {/* Close Button */}
+            <button
+              data-modal-close
+              class="absolute top-4 right-4 p-2 text-slate-400 transition-colors duration-300 hover:rotate-90 hover:text-slate-800 sm:top-6 sm:right-6 dark:text-gray-400 dark:hover:text-white"
+              aria-label="Tutup"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
+            {/* Modal Header */}
+            <div class="flex flex-col items-center gap-6 border-b border-slate-100 pb-6 sm:flex-row dark:border-white/5">
+              <div class="relative shrink-0">
+                <div class="pointer-events-none absolute inset-0 scale-105 rotate-6 rounded-2xl bg-linear-to-tr from-blue-600 to-indigo-600 opacity-20" />
+                <img
+                  src={member.data.image}
+                  alt={member.data.title}
+                  class="relative h-32 w-32 rounded-2xl border border-slate-200 object-cover shadow-lg dark:border-white/10"
+                />
+              </div>
+              <div class="space-y-2 text-center sm:text-left">
+                <h3 class="text-2xl font-extrabold text-gray-900 dark:text-white">
+                  {member.data.title}
+                </h3>
+                <p class="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                  {member.data.position}
+                </p>
+              </div>
+            </div>
+
+            {/* Biography Content */}
+            <div class="prose prose-blue dark:prose-invert max-w-none text-sm leading-relaxed font-normal text-slate-600 dark:text-gray-300">
+              <Content />
+            </div>
+
+            {/* Footer Contact Socials */}
+            <div class="flex flex-col gap-4 border-t border-slate-100 pt-6 sm:flex-row sm:items-center sm:justify-between dark:border-white/5">
+              <div class="flex items-center justify-center gap-4 sm:justify-start">
+                {member.data.social?.map((s) => (
+                  <a
+                    href={s.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={s.name}
+                    class="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-50 text-slate-400 transition-all hover:bg-blue-600 hover:text-white dark:bg-white/5 dark:text-gray-400"
+                  >
+                    {s.name === "github" && (
+                      <svg
+                        class="h-4.5 w-4.5"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                      </svg>
+                    )}
+                    {s.name === "linkedin" && (
+                      <svg
+                        class="h-4.5 w-4.5"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                      </svg>
+                    )}
+                    {s.name === "instagram" && (
+                      <svg
+                        class="h-4.5 w-4.5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <rect
+                          x="2"
+                          y="2"
+                          width="20"
+                          height="20"
+                          rx="5"
+                          ry="5"
+                        />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                      </svg>
+                    )}
+                    {s.name === "website" && (
+                      <svg
+                        class="h-4.5 w-4.5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                      </svg>
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</div>
+
+<!-- Modal Interactivity Vanilla JS Script -->
+<script>
+  function initModals() {
+    const triggers = document.querySelectorAll("[data-team-trigger]");
+    const modals = document.querySelectorAll("[data-team-modal]");
+    const socialLinks = document.querySelectorAll(".team-social-link");
+
+    // Prevent modal triggering when clicking social links
+    socialLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    });
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const id = trigger.getAttribute("data-team-trigger");
+        const modal = document.getElementById(`modal-${id}`);
+        if (modal) {
+          // Open Modal
+          modal.classList.remove("opacity-0", "pointer-events-none");
+          modal.classList.add("opacity-100", "pointer-events-auto");
+
+          // Animate content scale
+          const card = modal.querySelector(".glass-panel");
+          if (card) {
+            card.classList.remove("scale-95");
+            card.classList.add("scale-100");
+          }
+
+          // Disable scroll on body
+          document.body.style.overflow = "hidden";
+        }
+      });
+    });
+
+    modals.forEach((modal) => {
+      const closeBtn = modal.querySelector("[data-modal-close]");
+      const card = modal.querySelector(".glass-panel");
+
+      function closeModal() {
+        modal.classList.remove("opacity-100", "pointer-events-auto");
+        modal.classList.add("opacity-0", "pointer-events-none");
+
+        if (card) {
+          card.classList.remove("scale-100");
+          card.classList.add("scale-95");
+        }
+
+        // Enable scroll on body
+        document.body.style.overflow = "";
+      }
+
+      // Close on button click
+      closeBtn?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeModal();
+      });
+
+      // Close on backdrop click
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("opacity-100")) {
+          closeModal();
+        }
+      });
+    });
+  }
+
+  // Run on page load
+  document.addEventListener("DOMContentLoaded", initModals);
+
+  // Run on Astro page transition navigation (if using ViewTransitions)
+  document.addEventListener("astro:page-load", initModals);
+</script>
