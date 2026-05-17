@@ -1,0 +1,60 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE } from "../consts";
+import CallToAction from "../components/Common/CallToAction.astro";
+import Top from "../components/Pages/Technologies/Top.astro";
+import Stack from "../components/Pages/Technologies/Stack.astro";
+---
+
+<!doctype html>
+<html lang="id" class="dark">
+  <head>
+    <BaseHead
+      title={`Teknologi & Ekosistem Tech Stack Kami - ${SITE_TITLE}`}
+      description="Jelajahi berbagai teknologi modern berkinerja tinggi, aman, dan terukur yang kami gunakan di Tiba Tiba Ngoding untuk merekayasa aplikasi website dan mobile terbaik Anda."
+    />
+  </head>
+  <body
+    class="bg-slate-950 font-sans text-slate-200 antialiased selection:bg-blue-600/30 selection:text-blue-300"
+  >
+    <Header />
+
+    <main class="relative w-full overflow-hidden pt-32 pb-24">
+      <!-- Glow Accent -->
+      <div
+        class="pointer-events-none absolute top-10 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-indigo-600/5 blur-[120px]"
+      >
+      </div>
+
+      <!-- Cyberpunk subtle background pattern -->
+      <div
+        class="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] mask-[radial-gradient(ellipse_60%_50%_at_50%_40%,#000_60%,transparent_100%)] bg-size-[6rem_6rem] opacity-5"
+      >
+      </div>
+
+      <div
+        class="relative mx-auto max-w-[1500px] space-y-24 px-4 sm:px-6 lg:px-8"
+      >
+        <!-- Hero Heading Section -->
+        <Top />
+
+        <!-- Tech Stack Showcase -->
+        <Stack />
+
+        <!-- Call To Action (unwrapped, full-width ambient section) -->
+        <CallToAction
+          title="Siap Menggunakan Tech Stack Terbaik?"
+          subtitle="Konsultasikan kebutuhan produk digital Anda sekarang. Tim rekayasa kami siap merancang arsitektur aplikasi tangguh dan andal untuk mendongkrak skala bisnis Anda."
+          primaryText="Hubungi Rekayasa Kami"
+          primaryLink="/contact"
+          secondaryText="Lihat Jasa & Layanan"
+          secondaryLink="/services"
+        />
+      </div>
+
+      <Footer />
+    </main>
+  </body>
+</html>
