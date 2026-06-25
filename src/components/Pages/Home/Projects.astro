@@ -135,16 +135,14 @@ const categories = ["All", "Web", "Android", "iOS", "Desktop"];
                           : "text-xl sm:text-2xl"
                       }`}
                     >
-                      {title}
+                      <a href={`/projects/${project.id}/`} class="hover:underline">
+                        {title}
+                      </a>
                     </h3>
                   </div>
 
                   <a
-                    href={link || "#"}
-                    target={link && link !== "#" ? "_blank" : undefined}
-                    rel={
-                      link && link !== "#" ? "noopener noreferrer" : undefined
-                    }
+                    href={`/projects/${project.id}/`}
                     class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-slate-700 shadow-lg transition-all duration-300 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white hover:shadow-blue-600/20 dark:border-white/10 dark:bg-white/5 dark:text-white"
                     aria-label={`Lihat detail proyek ${title}`}
                   >
