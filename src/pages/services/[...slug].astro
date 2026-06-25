@@ -1,0 +1,451 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import { SITE_TITLE } from "../../consts";
+import CallToAction from "../../components/Common/CallToAction.astro";
+
+export function getStaticPaths() {
+  const services = [
+    {
+      slug: "website",
+      title: "Pembuatan Website Kustom & Landing Page",
+      tagline:
+        "Hadirkan website berkecepatan tinggi, SEO-friendly, dan berkonversi tinggi untuk bisnis Anda.",
+      description:
+        "Kami membangun website company profile dan landing page dengan optimalisasi tingkat tinggi. Menggunakan teknologi web modern seperti Astro, React, dan Tailwind CSS untuk menjamin website Anda memuat kurang dari 0.5 detik, ramah mesin pencari (SEO), dan memberikan pengalaman pengguna yang sangat premium.",
+      color: "blue",
+      features: [
+        "Optimalisasi Kecepatan Akses (< 0.5 Detik)",
+        "Desain Responsif (Sempurna di HP, Tablet, & Laptop)",
+        "SEO & Schema Markup Terintegrasi",
+        "Sertifikat Keamanan SSL & Proteksi DDoS",
+        "CMS Kustom untuk Kemudahan Edit Konten",
+        "Integrasi Analytics & Tracking Konversi",
+      ],
+      techStack: [
+        "Astro",
+        "React.js",
+        "Tailwind CSS",
+        "Next.js",
+        "Cloudflare",
+        "Vercel",
+      ],
+      process: [
+        {
+          step: "01",
+          name: "Konsultasi & Kebutuhan",
+          desc: "Mendiskusikan tujuan website, target audiens, dan struktur halaman.",
+        },
+        {
+          step: "02",
+          name: "Desain UI/UX",
+          desc: "Merancang wireframe dan mockup visual resolusi tinggi di Figma.",
+        },
+        {
+          step: "03",
+          name: "Pengembangan (Coding)",
+          desc: "Menulis kode bersih dengan performa tinggi dan ramah SEO.",
+        },
+        {
+          step: "04",
+          name: "Peluncuran & Optimasi",
+          desc: "Uji coba lintas browser, integrasi domain, dan deployment cloud.",
+        },
+      ],
+    },
+    {
+      slug: "mobile",
+      title: "Pembuatan Aplikasi Mobile iOS & Android",
+      tagline:
+        "Kembangkan aplikasi mobile native & cross-platform yang handal dan interaktif.",
+      description:
+        "Menyediakan layanan pembuatan aplikasi Android dan iOS menggunakan teknologi cross-platform terkemuka seperti React Native dan Flutter. Kami merancang arsitektur aplikasi yang scalable, sinkronisasi data cloud real-time, integrasi API, dan performa mulus layaknya aplikasi native.",
+      color: "indigo",
+      features: [
+        "Pengembangan Lintas Platform (Android & iOS)",
+        "Rilis Resmi di Play Store & App Store",
+        "Integrasi Gateway Pembayaran Otomatis",
+        "Sistem Push Notification Realtime",
+        "Penyimpanan Lokal & Sinkronisasi Offline",
+        "Keamanan Data & Enkripsi End-to-End",
+      ],
+      techStack: [
+        "React Native",
+        "Flutter",
+        "Node.js",
+        "Firebase",
+        "PostgreSQL",
+        "Google Cloud",
+      ],
+      process: [
+        {
+          step: "01",
+          name: "Analisis Arsitektur",
+          desc: "Merencanakan kebutuhan fitur, skema database, dan integrasi pihak ketiga.",
+        },
+        {
+          step: "02",
+          name: "Prototyping & Flow",
+          desc: "Merancang alur navigasi aplikasi dan interaksi antarmuka pengguna.",
+        },
+        {
+          step: "03",
+          name: "Coding & Integrasi",
+          desc: "Mengembangkan aplikasi mobile dan API backend secara paralel.",
+        },
+        {
+          step: "04",
+          name: "QA & Rilis Toko Aplikasi",
+          desc: "Pengujian fungsionalitas ketat dan proses rilis resmi ke Play Store & App Store.",
+        },
+      ],
+    },
+    {
+      slug: "custom",
+      title: "Sistem Aplikasi Kustom, ERP & IT Solutions",
+      tagline:
+        "Otomatisasi bisnis Anda dengan sistem aplikasi internal dan ERP terintegrasi.",
+      description:
+        "Tingkatkan produktivitas operasional kantor Anda melalui sistem terintegrasi yang dirancang khusus. Kami membangun dashboard ERP kustom, sistem manajemen inventaris, program kasir (Point of Sales), CRM untuk retensi pelanggan, dan integrasi otomatisasi data antar departemen.",
+      color: "purple",
+      features: [
+        "Custom Dashboard & ERP Terintegrasi",
+        "Otomatisasi Laporan Keuangan & Stok Realtime",
+        "Manajemen Pengguna & Hak Akses Bertingkat",
+        "Migrasi Data Sistem Lama Secara Aman",
+        "Integrasi API Pihak Ketiga (Logistik, Whatsapp, dll)",
+        "Pemeliharaan & Pemantauan Sistem 24/7",
+      ],
+      techStack: ["Laravel", "NestJS", "PostgreSQL", "Docker", "AWS", "Redis"],
+      process: [
+        {
+          step: "01",
+          name: "Pemetaan Alur Kerja",
+          desc: "Memetakan proses operasional bisnis aktual yang ingin diotomatisasi.",
+        },
+        {
+          step: "02",
+          name: "Desain Sistem & DB",
+          desc: "Merancang skema database relasional dan desain arsitektur mikroservis.",
+        },
+        {
+          step: "03",
+          name: "Development & Testing",
+          desc: "Membangun modul ERP secara bertahap dan melakukan uji integrasi internal.",
+        },
+        {
+          step: "04",
+          name: "Migrasi & Training",
+          desc: "Migrasi data lama, instalasi server lokal/cloud, dan pelatihan staf Anda.",
+        },
+      ],
+    },
+    {
+      slug: "design",
+      title: "Desain UI/UX & Prototipe Fungsional",
+      tagline:
+        "Ciptakan antarmuka pengguna yang memikat dan alur pengguna yang intuitif.",
+      description:
+        "Sebelum masuk ke tahap pengembangan kode, kami merancang visual aplikasi terbaik untuk memastikan kenyamanan pengguna Anda. Kami menyediakan riset kompetitor, arsitektur informasi, wireframe, hingga prototype fungsional di Figma yang interaktif memudahkan Anda menguji produk sebelum coding.",
+      color: "rose",
+      features: [
+        "Riset Perilaku Pengguna & Personas",
+        "Desain Wireframe & Arsitektur Informasi",
+        "Desain Visual Resolusi Tinggi (UI Design)",
+        "Prototipe Figma Interaktif yang Bisa Diklik",
+        "Brand Guideline & Sistem Desain Digital",
+        "Dokumentasi Asset Siap Pakai untuk Developer",
+      ],
+      techStack: [
+        "Figma",
+        "Adobe Illustrator",
+        "Prototyping",
+        "Wireframing",
+        "Design System",
+      ],
+      process: [
+        {
+          step: "01",
+          name: "Riset & Penemuan",
+          desc: "Memahami model bisnis, riset kompetitor, dan kebutuhan pengguna akhir.",
+        },
+        {
+          step: "02",
+          name: "Wireframing",
+          desc: "Merancang sketsa hitam-putih alur aplikasi untuk memvalidasi struktur.",
+        },
+        {
+          step: "03",
+          name: "Desain UI Premium",
+          desc: "Menerapkan warna, tipografi, dan aset visual berkualitas tinggi.",
+        },
+        {
+          step: "04",
+          name: "Prototyping & Feedback",
+          desc: "Menghubungkan layar menjadi interaktif dan melakukan uji kegunaan.",
+        },
+      ],
+    },
+  ];
+
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+
+// Determine colors
+const colorClasses =
+  {
+    blue: "text-blue-500 border-blue-500/20 bg-blue-600/10",
+    indigo: "text-indigo-500 border-indigo-500/20 bg-indigo-600/10",
+    purple: "text-purple-500 border-purple-500/20 bg-purple-600/10",
+    rose: "text-rose-500 border-rose-500/20 bg-rose-600/10",
+  }[service.color] || "text-blue-500 border-blue-500/20 bg-blue-600/10";
+---
+
+<!doctype html>
+<html lang="id" class="dark">
+  <head>
+    <BaseHead
+      title={`${service.title} - ${SITE_TITLE}`}
+      description={service.tagline}
+    />
+  </head>
+  <body
+    class="bg-slate-950 font-sans text-slate-200 antialiased selection:bg-blue-600/30 selection:text-blue-300"
+  >
+    <Header />
+
+    <main class="relative w-full overflow-hidden pt-32 pb-24">
+      <!-- Glow Accents -->
+      <div
+        class="pointer-events-none absolute top-10 left-1/4 h-[400px] w-[400px] rounded-full bg-blue-600/5 blur-[120px]"
+      >
+      </div>
+      <div
+        class="pointer-events-none absolute right-1/4 bottom-10 h-[400px] w-[400px] rounded-full bg-indigo-600/5 blur-[120px]"
+      >
+      </div>
+
+      <!-- Cyberpunk subtle background pattern -->
+      <div
+        class="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] mask-[radial-gradient(ellipse_60%_50%_at_50%_40%,#000_60%,transparent_100%)] bg-size-[6rem_6rem] opacity-5"
+      >
+      </div>
+
+      <div class="mx-auto max-w-[1200px] space-y-16 px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumbs & Navigation Back -->
+        <div
+          class="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-500"
+        >
+          <a href="/services" class="transition-colors hover:text-slate-300"
+            >Layanan</a
+          >
+          <span>/</span>
+          <span class="text-slate-300">{service.title}</span>
+        </div>
+
+        <!-- Top Section -->
+        <div class="space-y-6">
+          <span
+            class={`inline-block rounded-full border px-4 py-1.5 text-xs font-bold tracking-wider uppercase ${colorClasses}`}
+          >
+            Layanan TTN
+          </span>
+          <h1
+            class="text-4xl leading-tight font-extrabold text-slate-950 sm:text-5xl lg:text-6xl dark:text-white"
+          >
+            {service.title}
+          </h1>
+          <p
+            class="max-w-4xl text-xl leading-relaxed font-medium text-slate-600 dark:text-slate-400"
+          >
+            {service.tagline}
+          </p>
+        </div>
+
+        <!-- Layout Grid -->
+        <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
+          <!-- Left Column: Detailed description and features (lg:col-span-8) -->
+          <div class="space-y-12 lg:col-span-8">
+            <!-- Full Description Card -->
+            <div
+              class="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/50 p-8 shadow-xl backdrop-blur-xl dark:border-white/6 dark:bg-slate-900/40"
+            >
+              <div class="space-y-6">
+                <h2 class="text-2xl font-bold text-slate-950 dark:text-white">
+                  Deskripsi Layanan
+                </h2>
+                <p
+                  class="text-lg leading-relaxed font-medium text-slate-600 dark:text-slate-400"
+                >
+                  {service.description}
+                </p>
+              </div>
+            </div>
+
+            <!-- Features Card -->
+            <div
+              class="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/50 p-8 shadow-xl backdrop-blur-xl dark:border-white/6 dark:bg-slate-900/40"
+            >
+              <div class="space-y-6">
+                <h2 class="text-2xl font-bold text-slate-950 dark:text-white">
+                  Fitur & Manfaat Utama
+                </h2>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {
+                    service.features.map((feature) => (
+                      <div class="flex items-start gap-3">
+                        <div class="shrink-0 rounded-lg bg-emerald-500/10 p-1 text-emerald-500 dark:text-emerald-400">
+                          <svg
+                            class="h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="3"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                        </div>
+                        <span class="text-sm leading-snug font-semibold text-slate-600 dark:text-slate-300">
+                          {feature}
+                        </span>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+
+            <!-- Process Card -->
+            <div
+              class="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/50 p-8 shadow-xl backdrop-blur-xl dark:border-white/6 dark:bg-slate-900/40"
+            >
+              <div class="space-y-8">
+                <h2 class="text-2xl font-bold text-slate-950 dark:text-white">
+                  Metodologi & Proses Kerja
+                </h2>
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  {
+                    service.process.map((step) => (
+                      <div class="relative space-y-2 rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-white/5 dark:bg-slate-950/40">
+                        <div class="flex items-center gap-3">
+                          <span
+                            class={`rounded-lg px-2.5 py-0.5 text-sm font-extrabold ${colorClasses}`}
+                          >
+                            {step.step}
+                          </span>
+                          <h3 class="text-base font-bold text-slate-950 dark:text-white">
+                            {step.name}
+                          </h3>
+                        </div>
+                        <p class="text-sm leading-relaxed font-medium text-slate-600 dark:text-slate-400">
+                          {step.desc}
+                        </p>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Tech Stack & CTA (lg:col-span-4) -->
+          <div class="space-y-8 lg:col-span-4">
+            <!-- Tech Stack Card -->
+            <div
+              class="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/50 p-8 shadow-xl backdrop-blur-xl dark:border-white/6 dark:bg-slate-900/40"
+            >
+              <div class="space-y-6">
+                <h2 class="text-xl font-bold text-slate-950 dark:text-white">
+                  Teknologi Rekomendasi
+                </h2>
+                <p class="text-xs font-medium text-slate-500">
+                  Kami mengutamakan arsitektur teknologi premium modern
+                  berkinerja tinggi:
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  {
+                    service.techStack.map((tech) => (
+                      <span class="rounded-xl border border-slate-200/80 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-700 dark:border-white/5 dark:bg-slate-950 dark:text-slate-300">
+                        {tech}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+
+            <!-- Instant Consultation Card -->
+            <div
+              class="relative overflow-hidden rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-8 shadow-xl backdrop-blur-xl"
+            >
+              <div class="space-y-6">
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-500"
+                >
+                  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.004c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="space-y-2">
+                  <h3
+                    class="text-lg font-extrabold text-emerald-600 dark:text-emerald-400"
+                  >
+                    Konsultasi Kustom Instan
+                  </h3>
+                  <p
+                    class="text-sm leading-relaxed font-medium text-slate-600 dark:text-slate-300"
+                  >
+                    Siap berdiskusi mengenai proyek {service.title} Anda? Konsultasikan
+                    gratis sekarang juga via WhatsApp.
+                  </p>
+                </div>
+                <a
+                  href="https://wa.me/6285155343604"
+                  target="_blank"
+                  class="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 text-xs font-bold text-white shadow-md shadow-emerald-500/10 transition-all duration-300 hover:bg-emerald-600"
+                >
+                  Hubungi Via WhatsApp
+                  <svg
+                    class="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <CallToAction
+          title="Ingin Mewujudkan Ide Digital Anda?"
+          subtitle="Hubungi kami untuk menjadwalkan konsultasi gratis mengenai kebutuhan sistem rekayasa perangkat lunak perusahaan Anda."
+          primaryText="Hubungi Tim Kami"
+          primaryLink="/contact"
+          secondaryText="Lihat Layanan Lain"
+          secondaryLink="/services"
+        />
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
